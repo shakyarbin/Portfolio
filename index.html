@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <h1>Portfolio</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="hamburger">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Hello, I'm <span class="highlight">Your Name</span></h1>
+            <p>Web Developer | Designer | Creator</p>
+            <div class="cta-buttons">
+                <a href="#contact" class="btn primary-btn">Contact Me</a>
+                <a href="#projects" class="btn secondary-btn">View My Work</a>
+            </div>
+        </div>
+        <div class="hero-image">
+            <img src="assets/profile.jpg" alt="Profile Image">
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <div class="section-header">
+            <h2>About Me</h2>
+            <div class="underline"></div>
+        </div>
+        <div class="about-content">
+            <div class="about-image">
+                <img src="assets/about.jpg" alt="About Me">
+            </div>
+            <div class="about-text">
+                <h3>Who am I?</h3>
+                <p>I am a passionate web developer with expertise in creating responsive and user-friendly websites. With a strong foundation in both front-end and back-end technologies, I strive to deliver high-quality solutions that meet client needs.</p>
+                <p>My journey in web development began several years ago, and I've been continuously learning and improving my skills ever since. I enjoy tackling challenging projects and finding innovative solutions to complex problems.</p>
+                <div class="personal-info">
+                    <div class="info-item">
+                        <span class="info-label">Name:</span>
+                        <span class="info-value">Your Name</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Email:</span>
+                        <span class="info-value">your.email@example.com</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Location:</span>
+                        <span class="info-value">Your Location</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Availability:</span>
+                        <span class="info-value">Available for freelance</span>
+                    </div>
+                </div>
+                <a href="assets/resume.pdf" class="btn primary-btn" download>Download CV</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="skills">
+        <div class="section-header">
+            <h2>My Skills</h2>
+            <div class="underline"></div>
+        </div>
+        <div class="skills-content">
+            <div class="skill-category">
+                <h3>Frontend Development</h3>
+                <div class="skill-items">
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span>HTML/CSS</span>
+                            <span>90%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 90%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span>JavaScript</span>
+                            <span>85%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 85%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span>React</span>
+                            <span>80%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 80%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="skill-category">
+                <h3>Backend Development</h3>
+                <div class="skill-items">
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span>Node.js</span>
+                            <span>75%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 75%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span>Express</span>
+                            <span>70%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 70%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span>MongoDB</span>
+                            <span>65%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 65%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="projects">
+        <div class="section-header">
+            <h2>My Projects</h2>
+            <div class="underline"></div>
+        </div>
+        <div class="projects-filter">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="web">Web Development</button>
+            <button class="filter-btn" data-filter="design">Design</button>
+            <button class="filter-btn" data-filter="app">App Development</button>
+        </div>
+        <div class="projects-grid">
+            <div class="project-card" data-category="web">
+                <div class="project-img">
+                    <img src="assets/project1.jpg" alt="Project 1">
+                </div>
+                <div class="project-info">
+                    <h3>E-commerce Website</h3>
+                    <p>A fully responsive e-commerce website with product catalog, shopping cart, and payment integration.</p>
+                    <div class="project-links">
+                        <a href="#" class="project-link"><i class="fas fa-link"></i></a>
+                        <a href="#" class="project-github"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="project-card" data-category="design">
+                <div class="project-img">
+                    <img src="assets/project2.jpg" alt="Project 2">
+                </div>
+                <div class="project-info">
+                    <h3>Brand Identity Design</h3>
+                    <p>Complete brand identity design including logo, color palette, typography, and brand guidelines.</p>
+                    <div class="project-links">
+                        <a href="#" class="project-link"><i class="fas fa-link"></i></a>
+                        <a href="#" class="project-github"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="project-card" data-category="app">
+                <div class="project-img">
+                    <img src="assets/project3.jpg" alt="Project 3">
+                </div>
+                <div class="project-info">
+                    <h3>Task Management App</h3>
+                    <p>A mobile application for task management with features like task creation, reminders, and progress tracking.</p>
+                    <div class="project-links">
+                        <a href="#" class="project-link"><i class="fas fa-link"></i></a>
+                        <a href="#" class="project-github"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="project-card" data-category="web">
+                <div class="project-img">
+                    <img src="assets/project4.jpg" alt="Project 4">
+                </div>
+                <div class="project-info">
+                    <h3>Portfolio Website</h3>
+                    <p>A personal portfolio website showcasing skills, projects, and contact information.</p>
+                    <div class="project-links">
+                        <a href="#" class="project-link"><i class="fas fa-link"></i></a>
+                        <a href="#" class="project-github"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="project-card" data-category="design">
+                <div class="project-img">
+                    <img src="assets/project5.jpg" alt="Project 5">
+                </div>
+                <div class="project-info">
+                    <h3>UI/UX Design</h3>
+                    <p>User interface and experience design for a mobile application with wireframes and prototypes.</p>
+                    <div class="project-links">
+                        <a href="#" class="project-link"><i class="fas fa-link"></i></a>
+                        <a href="#" class="project-github"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="project-card" data-category="app">
+                <div class="project-img">
+                    <img src="assets/project6.jpg" alt="Project 6">
+                </div>
+                <div class="project-info">
+                    <h3>Weather App</h3>
+                    <p>A weather application providing real-time weather information based on user location.</p>
+                    <div class="project-links">
+                        <a href="#" class="project-link"><i class="fas fa-link"></i></a>
+                        <a href="#" class="project-github"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="section-header">
+            <h2>Contact Me</h2>
+            <div class="underline"></div>
+        </div>
+        <div class="contact-content">
+            <div class="contact-info">
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div class="contact-text">
+                        <h3>Location</h3>
+                        <p>Your City, Country</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="contact-text">
+                        <h3>Email</h3>
+                        <p>your.email@example.com</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <div class="contact-text">
+                        <h3>Phone</h3>
+                        <p>+1 234 567 890</p>
+                    </div>
+                </div>
+                <div class="social-links">
+                    <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="contact-form">
+                <form id="contactForm">
+                    <div class="form-group">
+                        <input type="text" id="name" name="name" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="email" name="email" placeholder="Your Email" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="subject" name="subject" placeholder="Subject" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="message" name="message" placeholder="Your Message" required></textarea>
+                    </div>
+                    <button type="submit" class="btn primary-btn">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2023 Your Name. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html> 
