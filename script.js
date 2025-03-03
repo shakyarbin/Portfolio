@@ -1,21 +1,42 @@
-// Toggle mobile navigation
+// DOM Elements
 const hamburger = document.querySelector('.hamburger');
 const nav = document.querySelector('nav');
+const header = document.querySelector('header');
+const skillBars = document.querySelectorAll('.skill-progress');
+const skillsSection = document.querySelector('.skills');
+const filterButtons = document.querySelectorAll('.filter-btn');
+const projectCards = document.querySelectorAll('.project-card');
+const contactForm = document.getElementById('contactForm');
+const revealElements = document.querySelectorAll('.section-header, .about-content, .skills-content, .projects-grid, .contact-content');
 
-hamburger.addEventListener('click', () => {
+// Mobile Navigation
+function toggleMobileNav() {
     hamburger.classList.toggle('active');
     nav.classList.toggle('active');
+    document.body.classList.toggle('nav-open');
+}
+
+hamburger.addEventListener('click', toggleMobileNav);
+
+// Close mobile nav when clicking outside
+document.addEventListener('click', (e) => {
+    if (nav.classList.contains('active') && 
+        !nav.contains(e.target) && 
+        !hamburger.contains(e.target)) {
+        toggleMobileNav();
+    }
 });
 
-// Close mobile navigation when clicking on a link
+// Close mobile nav when clicking links
 document.querySelectorAll('nav a').forEach(link => {
     link.addEventListener('click', () => {
-        hamburger.classList.remove('active');
-        nav.classList.remove('active');
+        if (nav.classList.contains('active')) {
+            toggleMobileNav();
+        }
     });
 });
 
-// Smooth scrolling for navigation links
+// Smooth scrolling with offset
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
         e.preventDefault();
@@ -24,51 +45,45 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         const targetElement = document.querySelector(targetId);
         
         if (targetElement) {
+            const headerOffset = 70;
+            const elementPosition = targetElement.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
             window.scrollTo({
-                top: targetElement.offsetTop - 70,
+                top: offsetPosition,
                 behavior: 'smooth'
             });
         }
     });
 });
 
-// Sticky header on scroll
-const header = document.querySelector('header');
+// Sticky header with throttle
 let lastScrollTop = 0;
+let ticking = false;
 
-window.addEventListener('scroll', () => {
+function updateHeader() {
     const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
     
     if (scrollTop > 100) {
-        header.style.padding = '15px 100px';
-        header.style.boxShadow = '0 5px 15px rgba(0, 0, 0, 0.1)';
+        header.classList.add('scrolled');
     } else {
-        header.style.padding = '20px 100px';
-        header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
-    }
-    
-    // Responsive padding adjustment
-    if (window.innerWidth <= 1024 && window.innerWidth > 768) {
-        if (scrollTop > 100) {
-            header.style.padding = '15px 50px';
-        } else {
-            header.style.padding = '20px 50px';
-        }
-    } else if (window.innerWidth <= 768) {
-        if (scrollTop > 100) {
-            header.style.padding = '15px 30px';
-        } else {
-            header.style.padding = '20px 30px';
-        }
+        header.classList.remove('scrolled');
     }
     
     lastScrollTop = scrollTop;
+    ticking = false;
+}
+
+window.addEventListener('scroll', () => {
+    if (!ticking) {
+        window.requestAnimationFrame(() => {
+            updateHeader();
+        });
+        ticking = true;
+    }
 });
 
-// Projects filtering
-const filterButtons = document.querySelectorAll('.filter-btn');
-const projectCards = document.querySelectorAll('.project-card');
-
+// Projects filtering with animation
 filterButtons.forEach(button => {
     button.addEventListener('click', () => {
         // Remove active class from all buttons
@@ -79,83 +94,115 @@ filterButtons.forEach(button => {
         
         const filterValue = button.getAttribute('data-filter');
         
+        // Filter projects with fade effect
         projectCards.forEach(card => {
-            if (filterValue === 'all' || card.getAttribute('data-category') === filterValue) {
-                card.style.display = 'block';
-            } else {
-                card.style.display = 'none';
-            }
+            card.style.opacity = '0';
+            card.style.transform = 'scale(0.8)';
+            
+            setTimeout(() => {
+                if (filterValue === 'all' || card.getAttribute('data-category') === filterValue) {
+                    card.style.display = 'block';
+                    setTimeout(() => {
+                        card.style.opacity = '1';
+                        card.style.transform = 'scale(1)';
+                    }, 50);
+                } else {
+                    card.style.display = 'none';
+                }
+            }, 300);
         });
     });
 });
 
-// Skills animation on scroll
-const skillBars = document.querySelectorAll('.skill-progress');
-const skillsSection = document.querySelector('.skills');
+// Skills animation with IntersectionObserver
+const skillsObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            skillBars.forEach(bar => {
+                const width = bar.style.width;
+                bar.style.width = '0';
+                setTimeout(() => {
+                    bar.style.width = width;
+                }, 100);
+            });
+            skillsObserver.unobserve(entry.target);
+        }
+    });
+}, { threshold: 0.5 });
 
-function animateSkills() {
-    const sectionTop = skillsSection.getBoundingClientRect().top;
-    const windowHeight = window.innerHeight;
-    
-    if (sectionTop < windowHeight - 100) {
-        skillBars.forEach(bar => {
-            const width = bar.style.width;
-            bar.style.width = '0';
-            setTimeout(() => {
-                bar.style.width = width;
-            }, 100);
-        });
-        
-        window.removeEventListener('scroll', animateSkills);
-    }
-}
+skillsObserver.observe(skillsSection);
 
-window.addEventListener('scroll', animateSkills);
-
-// Form submission
-const contactForm = document.getElementById('contactForm');
-
+// Form submission with validation
 contactForm.addEventListener('submit', function(e) {
     e.preventDefault();
     
-    // Get form values
-    const name = document.getElementById('name').value;
-    const email = document.getElementById('email').value;
-    const subject = document.getElementById('subject').value;
-    const message = document.getElementById('message').value;
-    
-    // Here you would typically send the form data to a server
-    // For demonstration, we'll just log it to the console
-    console.log({
-        name,
-        email,
-        subject,
-        message
-    });
-    
-    // Show success message (in a real application)
-    alert('Your message has been sent successfully!');
-    
-    // Reset form
-    contactForm.reset();
-});
+    // Basic form validation
+    const formData = new FormData(this);
+    let isValid = true;
+    let errorMessages = [];
 
-// Reveal animations on scroll
-const revealElements = document.querySelectorAll('.section-header, .about-content, .skills-content, .projects-grid, .contact-content');
-
-function revealOnScroll() {
-    revealElements.forEach(element => {
-        const elementTop = element.getBoundingClientRect().top;
-        const windowHeight = window.innerHeight;
-        
-        if (elementTop < windowHeight - 100) {
-            element.classList.add('revealed');
+    formData.forEach((value, key) => {
+        if (!value.trim()) {
+            isValid = false;
+            errorMessages.push(`${key.charAt(0).toUpperCase() + key.slice(1)} is required`);
+        }
+        if (key === 'email' && !isValidEmail(value)) {
+            isValid = false;
+            errorMessages.push('Please enter a valid email address');
         }
     });
+
+    if (!isValid) {
+        alert(errorMessages.join('\n'));
+        return;
+    }
+
+    // Simulate form submission
+    const submitButton = contactForm.querySelector('button[type="submit"]');
+    submitButton.disabled = true;
+    submitButton.textContent = 'Sending...';
+
+    setTimeout(() => {
+        alert('Your message has been sent successfully!');
+        contactForm.reset();
+        submitButton.disabled = false;
+        submitButton.textContent = 'Send Message';
+    }, 1500);
+});
+
+// Email validation helper
+function isValidEmail(email) {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
 }
 
-window.addEventListener('scroll', revealOnScroll);
-window.addEventListener('load', revealOnScroll);
+// Reveal animations with IntersectionObserver
+const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('revealed');
+            revealObserver.unobserve(entry.target);
+        }
+    });
+}, {
+    threshold: 0.15,
+    rootMargin: '0px 0px -50px 0px'
+});
+
+revealElements.forEach(element => {
+    revealObserver.observe(element);
+});
+
+// Handle window resize
+let resizeTimeout;
+window.addEventListener('resize', () => {
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(() => {
+        if (window.innerWidth > 768 && nav.classList.contains('active')) {
+            toggleMobileNav();
+        }
+    }, 250);
+});
 
 // Add revealed class for CSS animations
 document.addEventListener('DOMContentLoaded', () => {
@@ -173,4 +220,46 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     `;
     document.head.appendChild(style);
-}); 
+});
+
+// Journey Section Tab Switching
+const journeyTabs = document.querySelectorAll('.journey-tabs .tab');
+const journeySections = document.querySelectorAll('.journey-section');
+
+journeyTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+        // Remove active class from all tabs and sections
+        journeyTabs.forEach(t => t.classList.remove('active'));
+        journeySections.forEach(section => section.classList.remove('active'));
+        
+        // Add active class to clicked tab
+        tab.classList.add('active');
+        
+        // Show corresponding section
+        const targetSection = document.getElementById(tab.getAttribute('data-tab'));
+        targetSection.classList.add('active');
+    });
+});
+
+// Toggle description for journey items
+function toggleDescription(button) {
+    const journeyItem = button.closest('.journey-item');
+    const description = journeyItem.querySelector('.item-description');
+    
+    // Toggle active class on button and journey item
+    button.classList.toggle('active');
+    journeyItem.classList.toggle('expanded');
+    
+    // Animate the description
+    if (journeyItem.classList.contains('expanded')) {
+        description.style.display = 'block';
+        setTimeout(() => {
+            description.style.opacity = '1';
+        }, 10);
+    } else {
+        description.style.opacity = '0';
+        setTimeout(() => {
+            description.style.display = 'none';
+        }, 300);
+    }
+} 
