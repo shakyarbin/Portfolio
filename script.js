@@ -95,21 +95,21 @@ filterButtons.forEach(button => {
         const filterValue = button.getAttribute('data-filter');
         
         // Filter projects with fade effect
-        projectCards.forEach(card => {
-            card.style.opacity = '0';
-            card.style.transform = 'scale(0.8)';
+        projectCards.forEach((card, index) => {
+            // Set card index for staggered animation
+            card.style.setProperty('--card-index', index);
             
-            setTimeout(() => {
-                if (filterValue === 'all' || card.getAttribute('data-category') === filterValue) {
-                    card.style.display = 'block';
-                    setTimeout(() => {
-                        card.style.opacity = '1';
-                        card.style.transform = 'scale(1)';
-                    }, 50);
-                } else {
-                    card.style.display = 'none';
-                }
-            }, 300);
+            // Reset animation
+            card.style.animation = 'none';
+            card.offsetHeight; // Trigger reflow
+            
+            if (filterValue === 'all' || card.getAttribute('data-category') === filterValue) {
+                card.classList.remove('hidden');
+                // Re-trigger animation
+                card.style.animation = '';
+            } else {
+                card.classList.add('hidden');
+            }
         });
     });
 });
@@ -242,24 +242,49 @@ journeyTabs.forEach(tab => {
 });
 
 // Toggle description for journey items
-function toggleDescription(button) {
-    const journeyItem = button.closest('.journey-item');
-    const description = journeyItem.querySelector('.item-description');
-    
-    // Toggle active class on button and journey item
-    button.classList.toggle('active');
+function toggleDescription(element) {
+    const journeyItem = element.closest('.journey-item');
     journeyItem.classList.toggle('expanded');
-    
-    // Animate the description
-    if (journeyItem.classList.contains('expanded')) {
-        description.style.display = 'block';
-        setTimeout(() => {
-            description.style.opacity = '1';
-        }, 10);
-    } else {
-        description.style.opacity = '0';
-        setTimeout(() => {
-            description.style.display = 'none';
-        }, 300);
+}
+
+// Typing Animation
+function typeText() {
+    const text = "Arbin Shakya";
+    const typedTextElement = document.getElementById('typed-text');
+    const cursor = document.querySelector('.cursor');
+    let charIndex = 0;
+
+    function type() {
+        if (charIndex < text.length) {
+            typedTextElement.textContent += text.charAt(charIndex);
+            charIndex++;
+            setTimeout(type, 150);
+        } else {
+            // Hide cursor after typing is complete with a small delay
+            setTimeout(() => {
+                cursor.classList.add('hide');
+            }, 800); // 1.5 second delay after typing finishes
+        }
     }
-} 
+
+    // Start typing after a small delay
+    setTimeout(type, 500);
+}
+
+// Start typing animation when the page loads
+document.addEventListener('DOMContentLoaded', typeText);
+
+// Paper plane animation
+document.querySelector('.primary-btn').addEventListener('click', function(e) {
+    const btn = this;
+    const plane = btn.querySelector('i');
+    
+    if (!btn.classList.contains('animate')) {
+        btn.classList.add('animate');
+        
+        // Remove animation class after animation completes
+        setTimeout(() => {
+            btn.classList.remove('animate');
+        }, 1200); // Match animation duration (1.2s)
+    }
+}); 

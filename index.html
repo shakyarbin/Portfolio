@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio</title>
+    <link rel="icon" type="image/png" href="Favicon/Favicon.png">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -32,17 +33,18 @@
 
     <section id="home" class="hero">
         <div class="social-sidebar">
-            <a href="mailto:your.email@example.com" class="social-icon"><i class="far fa-envelope"></i></a>
-            <a href="https://linkedin.com" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
-            <a href="https://github.com" class="social-icon"><i class="fab fa-github"></i></a>
-            <a href="https://medium.com" class="social-icon">M</a>
-            <a href="https://instagram.com" class="social-icon"><i class="fab fa-instagram"></i></a>
-            <a href="https://twitter.com" class="social-icon"><i class="fab fa-twitter"></i></a>
+            <a href="mailto:notarbin99@gmail.com" class="social-icon"><i class="far fa-envelope"></i></a>
+            <a href="https://www.linkedin.com/in/arbin-shakya-408a40283/" target="_blank" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://github.com/shakyarbin" target="_blank" class="social-icon"><i class="fab fa-github"></i></a>
+            <a href="https://www.instagram.com/not_arbin/" target="_blank" class="social-icon"><i class="fab fa-instagram"></i></a>
+            <a href="https://x.com/not_arbin" target="_blank" class="social-icon"><i class="fab fa-x-twitter"></i></a>
         </div>
         <div class="hero-content">
             <h1>Hi, I'm</h1>
-            <h2 class="name">Arbin Shakya</h2>
-            <p class="title">I am an A-Level student passionate about technology, robotics, and electronics.</p>
+            <h2 class="name">
+                <span id="typed-text"></span><span class="cursor"></span>
+            </h2>
+            <p class="title">I am an A-Level student passionate about technology, robotics, and Web Development.</p>
             <a href="#contact" class="btn primary-btn">Say Hello! <i class="far fa-paper-plane"></i></a>
         </div>
         <div class="hero-image">
@@ -82,7 +84,7 @@
                 </div>
             </div>
             <div class="about-text">
-                <p>Hello, I am Arbin Shakya from Nepal. I am currently studying A levels at Trinity International College. I have a strong passion for technology, robotics, and electronics. I enjoy exploring new advancements in these fields and working on projects that challenge my skills and creativity.</p>
+                <p>Hello, I am Arbin Shakya from Nepal. I am currently studying A levels at Trinity International College. I have a strong passion for technology, robotics, and Web Development. I enjoy exploring new advancements in these fields and working on projects that challenge my skills and creativity.</p>
             </div>
         </div>
     </section>
@@ -116,15 +118,15 @@
             <!-- Awards Section -->
             <div class="journey-section active" id="awards">
                 <div class="journey-item">
-                    <button class="item-header" onclick="toggleDescription(this)">
+                    <div class="item-header" onclick="toggleDescription(this)">
                         <img src="My Journey Images/Trinity.png" alt="Trinity College" class="company-logo">
                         <div class="item-title">
                             <h3>Intra College SCI-TECH IT</h3>
                             <p>Trinity International College</p>
                         </div>
                         <div class="position first"><i class="fas fa-trophy"></i> First Position (2024)</div>
-                        <i class="fas fa-chevron-down expand-icon"></i>
-                    </button>
+                        <button class="expand-btn"><i class="fas fa-chevron-down"></i></button>
+                    </div>
                     <div class="item-description">
                         <ul>
                             <li>Project: <a href="https://shakyarbin.github.io/EduCare/" target="_blank">EduCare</a></li>
@@ -135,16 +137,14 @@
                 </div>
 
                 <div class="journey-item">
-                    <div class="item-header">
+                    <div class="item-header" onclick="toggleDescription(this)">
                         <img src="My Journey Images/Cambridge Code League.png" alt="Cambridge" class="company-logo">
                         <div class="item-title">
                             <h3>Cambridge Code League</h3>
                             <p>Cambridge Assessment International Education</p>
                         </div>
                         <div class="position second"><i class="fas fa-trophy"></i> Second Position (2023)</div>
-                        <button class="expand-btn" onclick="toggleDescription(this)">
-                            <i class="fas fa-chevron-down"></i>
-                        </button>
+                        <button class="expand-btn"><i class="fas fa-chevron-down"></i></button>
                     </div>
                     <div class="item-description">
                         <ul>
@@ -156,16 +156,14 @@
                 </div>
 
                 <div class="journey-item">
-                    <div class="item-header">
+                    <div class="item-header" onclick="toggleDescription(this)">
                         <img src="My Journey Images/Trinity.png" alt="Trinity College" class="company-logo">
                         <div class="item-title">
                             <h3>Trinity Intra College Hackathon</h3>
                             <p>Trinity International College</p>
                         </div>
                         <div class="position second"><i class="fas fa-trophy"></i> Second Position (2023)</div>
-                        <button class="expand-btn" onclick="toggleDescription(this)">
-                            <i class="fas fa-chevron-down"></i>
-                        </button>
+                        <button class="expand-btn"><i class="fas fa-chevron-down"></i></button>
                     </div>
                     <div class="item-description">
                         <ul>
@@ -186,18 +184,8 @@
                             <h3>A Level</h3>
                             <p>Trinity Int'l College</p>
                             <span class="date">2023 - 2025</span>
+                            <p style="color: var(--primary-color); font-weight: 600; margin-top: 8px;">President of Trinity Computer Council (TCC)</p>
                         </div>
-                        <button class="expand-btn" onclick="toggleDescription(this)">
-                            <i class="fas fa-chevron-down"></i>
-                        </button>
-                    </div>
-                    <div class="item-description">
-                        <ul>
-                            <li>President of Trinity Computer Council (TCC)</li>
-                            <li>Leading technology initiatives and organizing tech events</li>
-                            <li>Coordinating with faculty and students for computer science activities</li>
-                            <li>Managing and overseeing computer science club activities</li>
-                        </ul>
                     </div>
                 </div>
                 <div class="journey-item">
@@ -208,16 +196,6 @@
                             <p>Kathmandu University High School</p>
                             <span class="date">2018 - 2023</span>
                         </div>
-                        <button class="expand-btn" onclick="toggleDescription(this)">
-                            <i class="fas fa-chevron-down"></i>
-                        </button>
-                    </div>
-                    <div class="item-description">
-                        <ul>
-                            <li>Completed Secondary Education with distinction</li>
-                            <li>Participated in various science and technology competitions</li>
-                            <li>Active member of the school's robotics club</li>
-                        </ul>
                     </div>
                 </div>
             </div>
@@ -296,7 +274,7 @@
                 </div>
                 <div class="skill-item">
                     <div class="skill-level">Advanced</div>
-                    <div class="skill-name">Figma</div>
+                    <div class="skill-name">Web Designing</div>
                 </div>
             </div>
         </div>
@@ -309,16 +287,31 @@
             <img src="Newari/My journey.png" alt="My Projects in Newari" class="newari-text">
         </div>
         <div class="projects-filter">
-            <button class="filter-btn active" data-filter="all">All</button>
-            <button class="filter-btn" data-filter="web">Web Development</button>
-            <button class="filter-btn" data-filter="robotics">Robotics</button>
-            <button class="filter-btn" data-filter="automation">Automation</button>
+            <button class="filter-btn active" data-filter="all">
+                <i class="fas fa-th-large"></i>
+                <span>All</span>
+            </button>
+            <button class="filter-btn" data-filter="web">
+                <i class="fas fa-globe"></i>
+                <span>Web Dev</span>
+            </button>
+            <button class="filter-btn" data-filter="robotics">
+                <i class="fas fa-robot"></i>
+                <span>Robotics</span>
+            </button>
+            <button class="filter-btn" data-filter="automation">
+                <i class="fas fa-cogs"></i>
+                <span>Automation</span>
+            </button>
         </div>
         <div class="projects-grid">
             <!-- Web Development Projects -->
             <div class="project-card" data-category="web">
+                <div class="project-badge">
+                    <img src="Projects Images/Gold Badge.png" alt="First Position Badge">
+                </div>
                 <div class="project-img">
-                    <img src="https://source.unsplash.com/800x600/?healthcare,medical" alt="EduCare">
+                    <img src="Projects Images/EduCare.png" alt="EduCare">
                 </div>
                 <div class="project-info">
                     <h3>EduCare</h3>
@@ -332,7 +325,7 @@
 
             <div class="project-card" data-category="web">
                 <div class="project-img">
-                    <img src="https://source.unsplash.com/800x600/?study,education" alt="Past Paper Selector">
+                    <img src="Projects Images/Past Paper Selector.png" alt="Past Paper Selector">
                 </div>
                 <div class="project-info">
                     <h3>Past Paper Selector</h3>
@@ -345,8 +338,11 @@
             </div>
 
             <div class="project-card" data-category="web">
+                <div class="project-badge">
+                    <img src="Projects Images/Silver Badge.png" alt="Second Position Badge">
+                </div>
                 <div class="project-img">
-                    <img src="https://source.unsplash.com/800x600/?fitness,tracking" alt="FitTrack">
+                    <img src="Projects Images/Fitrack.jpg" alt="FitTrack">
                 </div>
                 <div class="project-info">
                     <h3>FitTrack</h3>
@@ -361,7 +357,7 @@
             <!-- Robotics Projects -->
             <div class="project-card" data-category="robotics">
                 <div class="project-img">
-                    <img src="https://source.unsplash.com/800x600/?robot,water" alt="Garbage Collection Boat">
+                    <img src="Projects Images/Arduino.png" alt="Garbage Collection Boat">
                 </div>
                 <div class="project-info">
                     <h3>Garbage Collection Boat</h3>
@@ -374,7 +370,7 @@
 
             <div class="project-card" data-category="robotics">
                 <div class="project-img">
-                    <img src="https://source.unsplash.com/800x600/?firetruck,emergency" alt="RC Fire Brigade">
+                    <img src="Projects Images/Arduino.png" alt="RC Fire Brigade">
                 </div>
                 <div class="project-info">
                     <h3>Remote Controlled Fire Brigade</h3>
@@ -387,7 +383,7 @@
 
             <div class="project-card" data-category="robotics">
                 <div class="project-img">
-                    <img src="https://source.unsplash.com/800x600/?rc,car" alt="RC Car">
+                    <img src="Projects Images/Arduino.png" alt="RC Car">
                 </div>
                 <div class="project-info">
                     <h3>Remote Controlled Car</h3>
@@ -401,7 +397,7 @@
             <!-- Automation Projects -->
             <div class="project-card" data-category="automation">
                 <div class="project-img">
-                    <img src="https://source.unsplash.com/800x600/?typing,keyboard" alt="MonkeyType Bot">
+                    <img src="Projects Images/MonkeyType.png" alt="MonkeyType Bot">
                 </div>
                 <div class="project-info">
                     <h3>MonkeyType Bot</h3>
@@ -414,7 +410,7 @@
 
             <div class="project-card" data-category="automation">
                 <div class="project-img">
-                    <img src="https://source.unsplash.com/800x600/?chrome,dinosaur" alt="Chrome Dino Bot">
+                    <img src="Projects Images/Chrome Dino Bot.jpg" alt="Chrome Dino Bot">
                 </div>
                 <div class="project-info">
                     <h3>Chrome Dino Bot</h3>
@@ -427,7 +423,7 @@
 
             <div class="project-card" data-category="automation">
                 <div class="project-img">
-                    <img src="https://source.unsplash.com/800x600/?piano,music" alt="Piano Tiles Bot">
+                    <img src="Projects Images/Piano Tiles Bot.jpg" alt="Piano Tiles Bot">
                 </div>
                 <div class="project-info">
                     <h3>Piano Tiles Bot</h3>
@@ -454,7 +450,7 @@
                     </div>
                     <div class="contact-text">
                         <h3>Location</h3>
-                        <p>Your City, Country</p>
+                        <p>Kathmandu, Nepal</p>
                     </div>
                 </div>
                 <div class="contact-item">
@@ -463,7 +459,7 @@
                     </div>
                     <div class="contact-text">
                         <h3>Email</h3>
-                        <p>your.email@example.com</p>
+                        <p>notarbin99@gmail.com</p>
                     </div>
                 </div>
                 <div class="contact-item">
@@ -476,10 +472,10 @@
                     </div>
                 </div>
                 <div class="social-links">
-                    <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
-                    <a href="#" class="social-link"><i class="fab fa-github"></i></a>
-                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
-                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.linkedin.com/in/arbin-shakya-408a40283/" target="_blank" class="social-link"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com/shakyarbin" target="_blank" class="social-link"><i class="fab fa-github"></i></a>
+                    <a href="https://x.com/not_arbin" target="_blank" class="social-link"><i class="fab fa-x-twitter"></i></a>
+                    <a href="https://www.instagram.com/not_arbin/" target="_blank" class="social-link"><i class="fab fa-instagram"></i></a>
                 </div>
             </div>
             <div class="contact-form">
@@ -504,7 +500,7 @@
 
     <footer>
         <div class="footer-content">
-            <p>&copy; 2023 Your Name. All Rights Reserved.</p>
+            <p>&copy; 2025 Arbin Shakya. All Rights Reserved.</p>
         </div>
     </footer>
 
