@@ -287,4 +287,61 @@ document.querySelector('.primary-btn').addEventListener('click', function(e) {
             btn.classList.remove('animate');
         }, 1200); // Match animation duration (1.2s)
     }
+});
+
+// Section title typing animation
+function typeSectionTitle(element) {
+    const titleSpan = element.querySelector('.section-title');
+    const cursor = element.querySelector('.section-cursor');
+    const text = titleSpan.getAttribute('data-text') || titleSpan.textContent;
+    
+    // Store original text if not already stored
+    if (!titleSpan.getAttribute('data-text')) {
+        titleSpan.setAttribute('data-text', text);
+    }
+    
+    titleSpan.textContent = '';
+    cursor.classList.remove('hide');
+    cursor.classList.add('typing');
+    
+    let charIndex = 0;
+    
+    function type() {
+        if (charIndex < text.length) {
+            titleSpan.textContent += text.charAt(charIndex);
+            charIndex++;
+            setTimeout(type, 100);
+        } else {
+            // Hide cursor after typing is complete with a small delay
+            setTimeout(() => {
+                cursor.classList.remove('typing');
+                cursor.classList.add('hide');
+            }, 800);
+        }
+    }
+    
+    // Start typing
+    type();
+}
+
+// Create intersection observer for section headers
+const sectionObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            typeSectionTitle(entry.target);
+        }
+    });
+}, {
+    threshold: 0.5,
+    rootMargin: '-50px'
+});
+
+// Observe all section headers
+document.querySelectorAll('.section-header').forEach(header => {
+    // Store original text content
+    const titleSpan = header.querySelector('.section-title');
+    titleSpan.setAttribute('data-text', titleSpan.textContent);
+    
+    // Start observing
+    sectionObserver.observe(header);
 }); 

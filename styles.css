@@ -192,7 +192,30 @@ header {
 }
 
 .logo {
-    display: none;
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    height: 40px;
+    width: auto;
+    transition: transform 0.3s ease;
+}
+
+.logo:hover img {
+    transform: scale(1.1);
+}
+
+@media (max-width: 768px) {
+    .logo img {
+        height: 35px;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo img {
+        height: 30px;
+    }
 }
 
 nav ul {
@@ -1926,5 +1949,46 @@ footer {
 @media (max-width: 480px) {
     .projects-grid {
         gap: 15px;
+    }
+}
+
+.section-cursor {
+    display: inline-block;
+    width: 3px;
+    height: 42px;
+    background-color: var(--primary-color);
+    margin-left: 2px;
+    animation: blink 0.8s infinite;
+    position: relative;
+    top: 6px;
+    border-radius: 2px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.section-cursor.typing {
+    opacity: 1;
+}
+
+.section-cursor.hide {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.section-title {
+    display: inline-block;
+}
+
+@media (max-width: 768px) {
+    .section-cursor {
+        height: 32px;
+        top: 4px;
+    }
+}
+
+@media (max-width: 480px) {
+    .section-cursor {
+        height: 24px;
+        top: 3px;
     }
 } 
