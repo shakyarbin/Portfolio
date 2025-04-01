@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    <meta name="description" content="Arbin Shakya - Garbage Collection Boat Project">
+    <meta name="keywords" content="Arduino, Robotics, Garbage Collection, Boat, Automation">
+    <meta name="author" content="Arbin Shakya">
+    <title>Garbage Collection Boat | Arbin Shakya</title>
+    <link rel="icon" type="image/png" href="../Favicon/LOGO.png">
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="project-styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../index.html#about">About</a></li>
+                <li><a href="../index.html#journey">Experience</a></li>
+                <li><a href="../index.html#skills">Skills</a></li>
+                <li><a href="../index.html#projects" class="active">Projects</a></li>
+                <li><a href="../index.html#contact">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="hamburger">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+    </header>
+
+    <section class="project-hero">
+        <div class="container">
+            <h1>Garbage Collection Boat</h1>
+            <p class="project-subtitle">Autonomous water vehicle designed to collect floating garbage from water bodies</p>
+            <div class="project-tags">
+                <span class="tag">Arduino</span>
+                <span class="tag">Robotics</span>
+                <span class="tag">Sensors</span>
+                <span class="tag">Environmental</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="project-details">
+        <div class="container">
+            <div class="project-info-grid">
+                <div class="project-image">
+                    <img src="../Projects Images/Arduino.png" alt="Garbage Collection Boat">
+                </div>
+                <div class="project-overview">
+                    <h2>Project Overview</h2>
+                    <p>The Garbage Collection Boat is an autonomous water vehicle designed to help clean up water bodies by collecting floating garbage. It uses Arduino-based control systems and sensors to navigate and collect debris effectively.</p>
+                    <div class="project-meta">
+                        <div class="meta-item">
+                            <i class="fas fa-calendar"></i>
+                            <span>Completed: April 2023</span>
+                        </div>
+                        <div class="meta-item">
+                            <i class="fas fa-code-branch"></i>
+                            <span>Status: Prototype</span>
+                        </div>
+                        <div class="meta-item">
+                            <i class="fas fa-users"></i>
+                            <span>Team Size: 2</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-content">
+                <div class="content-section">
+                    <h3>Problem Statement</h3>
+                    <p>Water pollution from floating debris is a significant environmental concern. Manual cleanup is labor-intensive and often hazardous. An autonomous solution can make cleanup operations more efficient and sustainable.</p>
+                </div>
+
+                <div class="content-section">
+                    <h3>Solution</h3>
+                    <p>Our autonomous garbage collection boat provides an innovative solution to address water pollution. The boat uses sensors to detect and navigate toward floating debris, then collects it using a specialized collection mechanism.</p>
+                </div>
+
+                <div class="content-section">
+                    <h3>Technical Implementation</h3>
+                    
+                    <!-- Code Editor Component for Arduino Code -->
+                    <h4>Main Control Logic</h4>
+                    <div class="code-editor">
+                        <div class="header">
+                            <span class="title">Arduino</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="icon">
+                                <g stroke-width="0" id="SVGRepo_bgCarrier"></g>
+                                <g stroke-linejoin="round" stroke-linecap="round" id="SVGRepo_tracerCarrier"></g>
+                                <g id="SVGRepo_iconCarrier">
+                                    <path stroke-linecap="round" stroke-width="2" stroke="#4C4F5A" d="M6 6L18 18"></path>
+                                    <path stroke-linecap="round" stroke-width="2" stroke="#4C4F5A" d="M18 6L6 18"></path>
+                                </g>
+                            </svg>
+                        </div>
+                        <div class="editor-content">
+                            <code class="code">
+                                <p><span class="color-1">#include</span> <span class="color-0">&lt;Servo.h&gt;</span></p>
+                                <p><span class="color-1">#include</span> <span class="color-0">&lt;NewPing.h&gt;</span></p>
+                                <p></p>
+                                <p><span class="color-2">// Motor pins</span></p>
+                                <p><span class="color-1">const int</span> <span class="color-3">leftMotorPin</span> = 5;</p>
+                                <p><span class="color-1">const int</span> <span class="color-3">rightMotorPin</span> = 6;</p>
+                                <p></p>
+                                <p><span class="color-2">// Ultrasonic sensor pins</span></p>
+                                <p><span class="color-1">const int</span> <span class="color-3">trigPin</span> = 9;</p>
+                                <p><span class="color-1">const int</span> <span class="color-3">echoPin</span> = 10;</p>
+                                <p></p>
+                                <p><span class="color-2">// Collection mechanism</span></p>
+                                <p><span class="color-3">Servo</span> collectorServo;</p>
+                                <p></p>
+                                <p><span class="color-1">void</span> <span class="color-0">setup</span>() {</p>
+                                <p class="property"><span class="color-3">Serial</span>.<span class="color-0">begin</span>(9600);</p>
+                                <p class="property"><span class="color-3">collectorServo</span>.<span class="color-0">attach</span>(3);</p>
+                                <p class="property"><span class="color-0">pinMode</span>(leftMotorPin, OUTPUT);</p>
+                                <p class="property"><span class="color-0">pinMode</span>(rightMotorPin, OUTPUT);</p>
+                                <p>}</p>
+                            </code>
+                        </div>
+                    </div>
+
+                <div class="content-section">
+                    <h3>Key Features</h3>
+                    <ul class="feature-list">
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <span>Autonomous navigation using ultrasonic sensors</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <span>Solar-powered operation for extended use</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <span>Debris collection mechanism with servo control</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <span>Water-resistant electronics housing</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <span>Remote monitoring capabilities</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="content-section">
+                    <h3>Results & Impact</h3>
+                    <p>The prototype successfully demonstrated the ability to navigate and collect floating debris in controlled testing environments. The project shows promise for scaling to larger implementations for real-world cleanup operations.</p>
+                </div>
+
+                <div class="content-section">
+                    <h3>Future Improvements</h3>
+                    <ul class="feature-list">
+                        <li>
+                            <i class="fas fa-lightbulb"></i>
+                            <span>Integration of machine learning for better object recognition</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-lightbulb"></i>
+                            <span>Improved battery capacity and solar efficiency</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-lightbulb"></i>
+                            <span>Fleet management system for multiple boats</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="back-to-projects">
+        <a href="../index.html#projects" class="btn">
+            <i class="fas fa-arrow-left"></i> Back to Projects
+        </a>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 Arbin Shakya. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+</html> 

@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    <meta name="description" content="Arbin Shakya - Click on Button Automation">
+    <meta name="keywords" content="Python, Automation, PyAutoGUI, Mouse Control, Keyboard Shortcuts">
+    <meta name="author" content="Arbin Shakya">
+    <title>Click on Button | Arbin Shakya</title>
+    <link rel="icon" type="image/png" href="../Favicon/LOGO.png">
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="project-styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../index.html#about">About</a></li>
+                <li><a href="../index.html#journey">Experience</a></li>
+                <li><a href="../index.html#skills">Skills</a></li>
+                <li><a href="../index.html#projects" class="active">Projects</a></li>
+                <li><a href="../index.html#contact">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="hamburger">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+    </header>
+
+    <section class="project-hero">
+        <div class="container">
+            <h1>
+                <span class="title-wrapper">
+                    <span class="rc-title" data-text="Click on Button"></span>
+                    <span class="title-cursor"></span>
+                </span>
+            </h1>
+            <div class="project-tags">
+                <span class="tag" style="animation-delay: 0.5s">Python</span>
+                <span class="tag" style="animation-delay: 0.6s">PyAutoGUI</span>
+                <span class="tag" style="animation-delay: 0.7s">Keyboard Module</span>
+                <span class="tag" style="animation-delay: 0.8s">Mouse Automation</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="project-details">
+        <div class="container">
+            <div class="project-info-grid">
+                <div class="project-image">
+                    <img src="../Projects Images/click-on-button.jpg" alt="Click on Button Automation">
+                </div>
+                <div class="project-overview">
+                    <h2>Project Overview</h2>
+                    <p>A simple yet effective automation tool that allows users to click repeatedly at specific screen coordinates using keyboard shortcuts. Perfect for repetitive clicking tasks in applications, websites, or games.</p>
+                    <div class="project-meta">
+                        <div class="meta-item">
+                            <i class="fas fa-calendar"></i>
+                            <span>Completed: 2022</span>
+                        </div>
+                        <div class="meta-item">
+                            <i class="fas fa-code-branch"></i>
+                            <span>Status: Completed</span>
+                        </div>
+                        <div class="meta-item">
+                            <i class="fas fa-mouse-pointer"></i>
+                            <span>Type: Mouse Automation</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-content">
+                <div class="content-section">
+                    <h3>Project Description</h3>
+                    <p>The Click on Button automation tool is designed to simplify repetitive clicking tasks by allowing users to define specific screen coordinates for automated mouse clicks. When triggered using the Ctrl key, the script moves the mouse to the predefined coordinates, performs a click, and then returns to a different position.</p>
+                    <p>This tool is particularly useful for scenarios requiring repeated clicking at the same position, such as in online forms, games, or applications that don't offer built-in automation options. The entire process is controlled using keyboard shortcuts, making it easy to start and stop the automation as needed.</p>
+                </div>
+
+                <div class="content-section">
+                    <h3>Technical Implementation</h3>
+                    <p>The tool is implemented in Python using PyAutoGUI for mouse control and the keyboard module for hotkey detection:</p>
+                    
+                    <!-- Enhanced Code Editor Component -->
+                    <div class="code-editor">
+                        <div class="header">
+                            <span class="title">click_button.py</span>
+                            <div class="editor-actions">
+                                <button class="action-btn copy-btn" onclick="copyCode(this)">
+                                    <i class="far fa-copy"></i>
+                                    <span>Copy</span>
+                                </button>
+                                <button class="action-btn download-btn" onclick="downloadCode(this)">
+                                    <i class="fas fa-download"></i>
+                                </button>
+                                <button class="action-btn close-btn">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="editor-content">
+                            <div class="copy-message">Copied to clipboard!</div>
+                            <div class="line-numbers">
+                                <span>1</span>
+                                <span>2</span>
+                                <span>3</span>
+                                <span>4</span>
+                                <span>5</span>
+                                <span>6</span>
+                                <span>7</span>
+                                <span>8</span>
+                                <span>9</span>
+                                <span>10</span>
+                                <span>11</span>
+                                <span>12</span>
+                                <span>13</span>
+                                <span>14</span>
+                                <span>15</span>
+                                <span>16</span>
+                                <span>17</span>
+                                <span>18</span>
+                                <span>19</span>
+                                <span>20</span>
+                                <span>21</span>
+                                <span>22</span>
+                                <span>23</span>
+                                <span>24</span>
+                                <span>25</span>
+                                <span>26</span>
+                                <span>27</span>
+                                <span>28</span>
+                                <span>29</span>
+                            </div>
+                            <code class="code">
+                                <p><span class="color-1">import</span> pyautogui</p>
+                                <p><span class="color-1">import</span> keyboard</p>
+                                <p><span class="color-1">import</span> time</p>
+                                <p></p>
+                                <p><span class="color-1">def</span> <span class="color-0">press_coordinate</span>(x, y):</p>
+                                <p class="property">  <span class="color-2"># Move the mouse to the specified coordinates</span></p>
+                                <p class="property">  pyautogui.moveTo(x, y)</p>
+                                <p class="property">  <span class="color-2"># Click the mouse at the specified coordinates</span></p>
+                                <p class="property">  pyautogui.click()</p>
+                                <p></p>
+                                <p><span class="color-2"># Set the coordinates you want to click</span></p>
+                                <p>x_coordinate = 1740</p>
+                                <p>y_coordinate = 1000</p>
+                                <p></p>
+                                <p>print(<span class="color-4">"Press Ctrl to click the specified coordinates."</span>)</p>
+                                <p>print(<span class="color-4">"Press Esc to exit the script."</span>)</p>
+                                <p></p>
+                                <p><span class="color-2"># Function to stop the script when 'Esc' is pressed</span></p>
+                                <p><span class="color-1">def</span> <span class="color-0">exit_script</span>():</p>
+                                <p class="property">  print(<span class="color-4">"Exiting script."</span>)</p>
+                                <p class="property">  exit()</p>
+                                <p></p>
+                                <p><span class="color-2"># Hook the exit function to 'Esc' key</span></p>
+                                <p>keyboard.add_hotkey(<span class="color-4">'esc'</span>, exit_script)</p>
+                                <p></p>
+                                <p><span class="color-2"># Keep running until 'Esc' is pressed</span></p>
+                                <p><span class="color-1">while</span> True:</p>
+                                <p class="property">  <span class="color-2"># Check for 'Ctrl' key press</span></p>
+                                <p class="property">  <span class="color-1">if</span> keyboard.is_pressed(<span class="color-4">'ctrl'</span>):</p>
+                                <p class="property">    press_coordinate(x_coordinate, y_coordinate)</p>
+                                <p class="property">    print(<span class="color-4">f"Clicked at ({x_coordinate}, {y_coordinate})"</span>)</p>
+                                <p class="property">    <span class="color-2"># Wait to avoid multiple clicks in rapid succession</span></p>
+                                <p class="property">    time.sleep(0.5)</p>
+                                <p class="property">    pyautogui.moveTo(320, 670)</p>
+                                <p class="property">    time.sleep(0.5)</p>
+                            </code>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content-section">
+                    <h3>Key Features</h3>
+                    <ul class="feature-list">
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <span>Automated clicking at predefined screen coordinates</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <span>Keyboard shortcuts for control (Ctrl to click, Esc to exit)</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <span>Mouse repositioning after each click</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <span>Adjustable delay between actions</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <span>Simple console feedback for user monitoring</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="content-section">
+                    <h3>Development Process</h3>
+                    <p>The development of this automation tool followed these steps:</p>
+                    <ol>
+                        <li>Identifying the need for a simple click automation solution</li>
+                        <li>Selecting PyAutoGUI for mouse control and keyboard for hotkey detection</li>
+                        <li>Implementing the basic click function with coordinate parameters</li>
+                        <li>Setting up keyboard shortcuts for user control</li>
+                        <li>Adding safety features like the exit hotkey and delay between clicks</li>
+                        <li>Testing with various applications and refining the timing</li>
+                    </ol>
+                </div>
+
+                <div class="content-section">
+                    <h3>Challenges & Solutions</h3>
+                    <ul class="feature-list">
+                        <li>
+                            <i class="fas fa-exclamation-triangle" style="color: #ff9800;"></i>
+                            <span><strong>Challenge:</strong> Determining the exact screen coordinates for clicking<br>
+                            <strong>Solution:</strong> Created a separate utility to identify and record mouse positions</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-exclamation-triangle" style="color: #ff9800;"></i>
+                            <span><strong>Challenge:</strong> Preventing unintended rapid-fire clicking<br>
+                            <strong>Solution:</strong> Implemented timing delays and mouse repositioning between clicks</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="content-section">
+                    <h3>Results & Impact</h3>
+                    <p>The Click on Button automation tool successfully automates repetitive clicking tasks, saving time and reducing fatigue for the user. Its simple implementation makes it accessible even to those with limited programming knowledge, while still being effective for a wide range of applications.</p>
+                    <p>This project demonstrates how even simple automation scripts can significantly improve workflow efficiency and reduce the tedium of repetitive computer tasks. The tool's flexibility makes it adaptable to various scenarios from form filling to game automation.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <button onclick="scrollToTop()" class="back-to-top-button">
+        <svg class="svgIcon" viewBox="0 0 384 512">
+            <path d="M214.6 41.4c-12.5-12.5-32.8-12.5-45.3 0l-160 160c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 141.2V448c0 17.7 14.3 32 32 32s32-14.3 32-32V141.2L329.4 246.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-160-160z"></path>
+        </svg>
+    </button>
+
+    <div class="back-to-projects">
+        <a href="../index.html#projects" class="spidey-back-btn">
+            <div class="green-slide-bg">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" height="25px" width="25px">
+                    <path d="M224 480h640a32 32 0 1 1 0 64H224a32 32 0 0 1 0-64z" fill="#000000"></path>
+                    <path d="m237.248 512 265.408 265.344a32 32 0 0 1-45.312 45.312l-288-288a32 32 0 0 1 0-45.312l288-288a32 32 0 1 1 45.312 45.312L237.248 512z" fill="#000000"></path>
+                </svg>
+            </div>
+            <p class="btn-label">Go Back</p>
+        </a>
+    </div>
+
+    <script src="../script.js"></script>
+    <script>
+        function copyCode(button) {
+            const codeEditor = button.closest('.code-editor');
+            const codeElement = codeEditor.querySelector('.code');
+            
+            const tempElement = document.createElement('textarea');
+            
+            let codeText = '';
+            codeElement.querySelectorAll('p').forEach(line => {
+                codeText += line.textContent + '\n';
+            });
+            
+            tempElement.value = codeText;
+            document.body.appendChild(tempElement);
+            tempElement.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempElement);
+            
+            const copyMessage = codeEditor.querySelector('.copy-message');
+            copyMessage.classList.add('show');
+            
+            setTimeout(() => {
+                copyMessage.classList.remove('show');
+            }, 2000);
+        }
+        
+        function downloadCode(button) {
+            const codeEditor = button.closest('.code-editor');
+            const codeElement = codeEditor.querySelector('.code');
+            const filename = codeEditor.querySelector('.title').textContent;
+            
+            let codeText = '';
+            codeElement.querySelectorAll('p').forEach(line => {
+                codeText += line.textContent + '\n';
+            });
+            
+            const blob = new Blob([codeText], {type: 'text/plain'});
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = filename;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            
+            const copyMessage = codeEditor.querySelector('.copy-message');
+            copyMessage.textContent = 'Downloaded!';
+            copyMessage.classList.add('show');
+            
+            setTimeout(() => {
+                copyMessage.classList.remove('show');
+                copyMessage.textContent = 'Copied to clipboard!';
+            }, 2000);
+        }
+        
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+        
+        function updateLineNumbers() {
+            const codeEditors = document.querySelectorAll('.code-editor');
+            
+            codeEditors.forEach(editor => {
+                const codeElement = editor.querySelector('.code');
+                const lineNumbersContainer = editor.querySelector('.line-numbers');
+                const codeLines = codeElement.querySelectorAll('p');
+                
+                // Clear existing line numbers
+                lineNumbersContainer.innerHTML = '';
+                
+                // Create new line numbers based on actual code lines
+                for (let i = 1; i <= codeLines.length; i++) {
+                    const lineSpan = document.createElement('span');
+                    lineSpan.textContent = i;
+                    lineNumbersContainer.appendChild(lineSpan);
+                }
+            });
+        }
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            updateLineNumbers();
+            
+            const backToTopButton = document.querySelector('.back-to-top-button');
+            if (backToTopButton) {
+                backToTopButton.classList.remove('visible');
+            }
+
+            const revealElements = document.querySelectorAll('.content-section');
+            
+            function checkReveal() {
+                const triggerBottom = window.innerHeight * 0.85;
+                
+                revealElements.forEach(section => {
+                    const sectionTop = section.getBoundingClientRect().top;
+                    if (sectionTop < triggerBottom) {
+                        section.classList.add('revealed');
+                    }
+                });
+            }
+            
+            revealElements.forEach(section => {
+                section.classList.add('reveal-section');
+            });
+            
+            checkReveal();
+            
+            window.addEventListener('scroll', checkReveal);
+        });
+
+        window.addEventListener('scroll', function() {
+            const backToTopButton = document.querySelector('.back-to-top-button');
+            if (backToTopButton) {
+                if (window.scrollY > 300) {
+                    backToTopButton.classList.add('visible');
+                } else {
+                    backToTopButton.classList.remove('visible');
+                }
+            }
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const titleElement = document.querySelector('.rc-title');
+            const cursor = document.querySelector('.title-cursor');
+            const text = titleElement.getAttribute('data-text');
+            
+            titleElement.textContent = '';
+            cursor.classList.remove('hide');
+            
+            let charIndex = 0;
+            
+            function typeTitle() {
+                if (charIndex < text.length) {
+                    titleElement.textContent += text.charAt(charIndex);
+                    charIndex++;
+                    setTimeout(typeTitle, 100);
+                } else {
+                    cursor.classList.add('hide');
+                }
+            }
+            
+            setTimeout(typeTitle, 500);
+        });
+    </script>
+</body>
+</html> 
