@@ -30,6 +30,12 @@
       "description": "A-Level student passionate about technology, robotics, and Web Development"
     }
     </script>
+    <style>
+        /* Hide non-all projects by default */
+        .projects-grid .project-card.hidden {
+            display: none !important;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -37,9 +43,9 @@
             <ul>
                 <li><a href="#home" class="active">Home</a></li>
                 <li><a href="#about">About</a></li>
-                <li><a href="#experience">Experience</a></li>
+                <li><a href="#journey">Experience</a></li>
+                <li><a href="#skills">Skills</a></li>
                 <li><a href="#projects">Projects</a></li>
-                <li><a href="#blog">Blog</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
@@ -307,11 +313,11 @@
         </div>
         <div class="projects-filter">
             <button class="filter-btn active" data-filter="all">
-                <i class="fas fa-th-large"></i>
+                <i class="fas fa-border-all"></i>
                 <span>All</span>
             </button>
             <button class="filter-btn" data-filter="web">
-                <i class="fas fa-globe"></i>
+                <i class="fas fa-code"></i>
                 <span>Web Dev</span>
             </button>
             <button class="filter-btn" data-filter="robotics">
@@ -325,7 +331,7 @@
         </div>
         <div class="projects-grid">
             <!-- Web Development Projects -->
-            <div class="project-card" data-category="web">
+            <div class="project-card" data-category="web all">
                 <div class="project-badge">
                     <img src="Projects Images/Gold Badge.png" alt="First Position Badge">
                 </div>
@@ -336,13 +342,13 @@
                     <h3>EduCare</h3>
                     <p>Emergency healthcare management system for educational institutions with QR-based medical profile access.</p>
                     <div class="project-links">
-                        <a href="https://shakyarbin.github.io/EduCare/" class="project-link" target="_blank"><i class="fas fa-link"></i></a>
+                        <a href="https://shakyarbin.github.io/EduCare/" class="project-link" target="_blank"><i class="fas fa-external-link-alt"></i></a>
                         <a href="https://github.com/shakyarbin/EduCare" class="project-github" target="_blank"><i class="fab fa-github"></i></a>
                     </div>
                 </div>
             </div>
 
-            <div class="project-card" data-category="web">
+            <div class="project-card" data-category="web all">
                 <div class="project-img">
                     <img src="Projects Images/Past Paper Selector.png" alt="Past Paper Selector">
                 </div>
@@ -350,13 +356,13 @@
                     <h3>Past Paper Selector</h3>
                     <p>Interactive tool for accessing and organizing A-Level past papers with smart filtering options.</p>
                     <div class="project-links">
-                        <a href="https://shakyarbin.github.io/Boards/" class="project-link" target="_blank"><i class="fas fa-link"></i></a>
+                        <a href="https://shakyarbin.github.io/Boards/" class="project-link" target="_blank"><i class="fas fa-external-link-alt"></i></a>
                         <a href="https://github.com/shakyarbin/Boards" class="project-github" target="_blank"><i class="fab fa-github"></i></a>
                     </div>
                 </div>
             </div>
 
-            <div class="project-card" data-category="web">
+            <div class="project-card" data-category="web all">
                 <div class="project-badge">
                     <img src="Projects Images/Silver Badge.png" alt="Second Position Badge">
                 </div>
@@ -367,14 +373,14 @@
                     <h3>FitTrack</h3>
                     <p>Fitness tracking application with step counter and competitive racing features.</p>
                     <div class="project-links">
-                        <a href="https://shakyarbin.github.io/fitrack/" class="project-link" target="_blank"><i class="fas fa-link"></i></a>
+                        <a href="https://shakyarbin.github.io/fitrack/" class="project-link" target="_blank"><i class="fas fa-external-link-alt"></i></a>
                         <a href="https://github.com/shakyarbin/fitrack" class="project-github" target="_blank"><i class="fab fa-github"></i></a>
                     </div>
                 </div>
             </div>
 
             <!-- Robotics Projects -->
-            <div class="project-card" data-category="robotics">
+            <div class="project-card" data-category="robotics all">
                 <div class="project-img">
                     <img src="Projects Images/Arduino.png" alt="Garbage Collection Boat">
                 </div>
@@ -382,20 +388,34 @@
                     <h3>Garbage Collection Boat</h3>
                     <p>Autonomous water vehicle designed to collect floating garbage from water bodies.</p>
                     <div class="project-links">
-                        <a href="#" class="project-github"><i class="fab fa-github"></i></a>
+                        <a href="Projects/garbage-collection-boat.html" class="project-link"><i class="fas fa-file-code"></i></a>
                     </div>
                 </div>
             </div>
 
-            <div class="project-card" data-category="robotics">
+            <div class="project-card" data-category="robotics all">
                 <div class="project-img">
-                    <img src="Projects Images/Arduino.png" alt="RC Fire Brigade">
+                    <img src="Projects Images/CS50.png" alt="CS50">
                 </div>
                 <div class="project-info">
-                    <h3>Remote Controlled Fire Brigade</h3>
-                    <p>Remote-operated firefighting vehicle with water spraying capabilities.</p>
+                    <h3>CS50: Introduction to Computer Science</h3>
+                    <p>Harvard University's introduction to computer science and programming with projects in C, Python, SQL, and JavaScript.</p>
                     <div class="project-links">
-                        <a href="#" class="project-github"><i class="fab fa-github"></i></a>
+                        <a href="https://github.com/code50/134195918" class="project-github" target="_blank"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Automation Projects -->
+            <div class="project-card" data-category="automation all">
+                <div class="project-img">
+                    <img src="Projects Images/MonkeyType.png" alt="MonkeyType Bot">
+                </div>
+                <div class="project-info">
+                    <h3>MonkeyType Bot</h3>
+                    <p>Automated typing bot for MonkeyType with high WPM capabilities.</p>
+                    <div class="project-links">
+                        <a href="Projects/monkeytype-bot.html" class="project-link"><i class="fas fa-file-code"></i></a>
                     </div>
                 </div>
             </div>
@@ -408,21 +428,7 @@
                     <h3>Remote Controlled Car</h3>
                     <p>Custom-built RC car with advanced control features and maneuverability.</p>
                     <div class="project-links">
-                        <a href="#" class="project-github"><i class="fab fa-github"></i></a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Automation Projects -->
-            <div class="project-card" data-category="automation">
-                <div class="project-img">
-                    <img src="Projects Images/MonkeyType.png" alt="MonkeyType Bot">
-                </div>
-                <div class="project-info">
-                    <h3>MonkeyType Bot</h3>
-                    <p>Automated typing bot for MonkeyType with high WPM capabilities.</p>
-                    <div class="project-links">
-                        <a href="#" class="project-github"><i class="fab fa-github"></i></a>
+                        <a href="Projects/remote-controlled-car.html" class="project-link"><i class="fas fa-file-code"></i></a>
                     </div>
                 </div>
             </div>
@@ -435,7 +441,7 @@
                     <h3>Chrome Dino Bot</h3>
                     <p>AI-powered bot that plays the Chrome dinosaur game automatically.</p>
                     <div class="project-links">
-                        <a href="#" class="project-github"><i class="fab fa-github"></i></a>
+                        <a href="Projects/chrome-dino-bot.html" class="project-link"><i class="fas fa-file-code"></i></a>
                     </div>
                 </div>
             </div>
@@ -448,9 +454,120 @@
                     <h3>Piano Tiles Bot</h3>
                     <p>Automated bot that plays Piano Tiles game with perfect accuracy.</p>
                     <div class="project-links">
-                        <a href="#" class="project-github"><i class="fab fa-github"></i></a>
+                        <a href="Projects/piano-tiles-bot.html" class="project-link"><i class="fas fa-file-code"></i></a>
                     </div>
                 </div>
+            </div>
+
+            <div class="project-card" data-category="automation">
+                <div class="project-img">
+                    <img src="Projects Images/100 Youtube Tabs.jpg" alt="100 Youtube Tabs">
+                </div>
+                <div class="project-info">
+                    <h3>100 Youtube Tabs</h3>
+                    <p>Python automation script that opens multiple YouTube tabs simultaneously.</p>
+                    <div class="project-links">
+                        <a href="https://dev-arbin.pantheonsite.io/tabs/" class="project-link" target="_blank"><i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card" data-category="automation">
+                <div class="project-img">
+                    <img src="Projects Images/Click on Button.png" alt="Click on Button">
+                </div>
+                <div class="project-info">
+                    <h3>Click on Button</h3>
+                    <p>Python automation tool for automated button clicking and interaction.</p>
+                    <div class="project-links">
+                        <a href="Projects/click-on-button.html" class="project-link"><i class="fas fa-file-code"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="project-card" data-category="web">
+                <div class="project-img">
+                    <img src="Projects Images/Hyperlink.png" alt="Hyperlink">
+                </div>
+                <div class="project-info">
+                    <h3>Hyperlink</h3>
+                    <p>Interactive educational webpage explaining hyperlink functionality, types, and practical applications on the web.</p>
+                    <div class="project-links">
+                        <a href="https://dev-arbin.pantheonsite.io/hyperlink/" class="project-link" target="_blank"><i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="project-card" data-category="web">
+                <div class="project-img">
+                    <img src="Projects Images/Rotating Cube.png" alt="3D Rotating Cube">
+                </div>
+                <div class="project-info">
+                    <h3>3D Rotating Cube</h3>
+                    <p>Interactive 3D cube animation created with CSS and JavaScript, showcasing chess piece symbols on each face.</p>
+                    <div class="project-links">
+                        <a href="https://dev-arbin.pantheonsite.io/rotating-cube/" class="project-link" target="_blank"><i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="project-card" data-category="automation">
+                <div class="project-img">
+                    <img src="Projects Images/10ff.png" alt="10FastFinger Bot">
+                </div>
+                <div class="project-info">
+                    <h3>10FastFinger Bot</h3>
+                    <p>Automated typing bot specifically designed for 10FastFinger typing test website with OCR technology.</p>
+                    <div class="project-links">
+                        <a href="Projects/10ff-bot.html" class="project-link"><i class="fas fa-file-code"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="certificates" class="certificates">
+        <div class="section-header">
+            <h2><span class="section-title" id="certificates-title">My Certificates</span><span class="section-cursor"></span></h2>
+            <div class="underline"></div>
+            <img src="Newari/My journey.png" alt="My Certificates in Newari" class="newari-text">
+        </div>
+        <div class="wrapper">
+            <div class="container">
+                <input type="radio" name="slide" id="c1" checked>
+                <label for="c1" class="card">
+                    <div class="row"></div>
+                </label>
+                
+                <input type="radio" name="slide" id="c2">
+                <label for="c2" class="card">
+                    <div class="row"></div>
+                </label>
+                
+                <input type="radio" name="slide" id="c3">
+                <label for="c3" class="card">
+                    <div class="row"></div>
+                </label>
+                
+                <input type="radio" name="slide" id="c4">
+                <label for="c4" class="card">
+                    <div class="row"></div>
+                </label>
+                
+                <input type="radio" name="slide" id="c5">
+                <label for="c5" class="card">
+                    <div class="row"></div>
+                </label>
+                
+                <input type="radio" name="slide" id="c6">
+                <label for="c6" class="card">
+                    <div class="row"></div>
+                </label>
+                
+                <input type="radio" name="slide" id="c7">
+                <label for="c7" class="card">
+                    <div class="row"></div>
+                </label>
             </div>
         </div>
     </section>
@@ -524,5 +641,52 @@
     </footer>
 
     <script src="script.js"></script>
+    <script>
+        // Apply initial filtering when the DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            // Hide all cards that don't have "all" in their data-category
+            document.querySelectorAll('.project-card').forEach(card => {
+                const cardCategories = card.getAttribute('data-category').split(' ');
+                
+                if (!cardCategories.includes('all')) {
+                    card.classList.add('hidden');
+                }
+            });
+        });
+
+        // Filter projects based on button clicks
+        document.querySelectorAll('.filter-btn').forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons
+                document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+                
+                // Add active class to clicked button
+                button.classList.add('active');
+                
+                const filterValue = button.getAttribute('data-filter');
+                
+                // Filter projects using classes instead of inline styles
+                document.querySelectorAll('.project-card').forEach(card => {
+                    const cardCategories = card.getAttribute('data-category').split(' ');
+                    
+                    if (filterValue === 'all') {
+                        // For "all" filter, only show cards with "all" in their data-category
+                        if (cardCategories.includes('all')) {
+                            card.classList.remove('hidden');
+                        } else {
+                            card.classList.add('hidden');
+                        }
+                    } else {
+                        // For other filters, show cards that include the filter value
+                        if (cardCategories.includes(filterValue)) {
+                            card.classList.remove('hidden');
+                        } else {
+                            card.classList.add('hidden');
+                        }
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html> 

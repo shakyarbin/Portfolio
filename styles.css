@@ -186,40 +186,23 @@ header {
     z-index: 1000;
     backdrop-filter: blur(10px);
     border-radius: 15px;
-    max-width: 800px;
+    max-width: 600px;
     margin: 0 auto;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
 }
 
+/* Remove logo styles */
 .logo {
-    display: flex;
-    align-items: center;
+    display: none;
 }
 
-.logo img {
-    height: 40px;
-    width: auto;
-    transition: transform 0.3s ease;
-}
-
-.logo:hover img {
-    transform: scale(1.1);
-}
-
-@media (max-width: 768px) {
-    .logo img {
-        height: 35px;
-    }
-}
-
-@media (max-width: 480px) {
-    .logo img {
-        height: 30px;
-    }
+nav {
+    width: 100%;
 }
 
 nav ul {
     display: flex;
+    justify-content: center;
     gap: 40px;
 }
 
@@ -1990,5 +1973,516 @@ footer {
     .section-cursor {
         height: 24px;
         top: 3px;
+    }
+}
+
+/* Certificates Carousel Styles */
+.certificates {
+    padding: 100px 5%;
+    background-color: #fff;
+    contain: content;
+}
+
+.certificates .wrapper {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 0;
+}
+
+.certificates .container {
+    height: 425px;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    max-width: 1200px;
+}
+
+.certificates .card {
+    width: 80px;
+    border-radius: .75rem;
+    background-size: cover;
+    background-position: center;
+    cursor: pointer;
+    overflow: hidden;
+    border-radius: 2rem;
+    margin: 0 10px;
+    display: flex;
+    align-items: flex-end;
+    transition: .6s cubic-bezier(.28,-0.03,0,.99);
+    box-shadow: 0px 10px 30px -5px rgba(0,0,0,0.3);
+}
+
+.certificates .card > .row {
+    color: white;
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.certificates .card > .row > .icon {
+    background: var(--primary-color);
+    color: white;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 15px;
+    font-size: 18px;
+}
+
+.certificates .card > .row > .description {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    overflow: hidden;
+    height: 80px;
+    width: 520px;
+    opacity: 0;
+    transform: translateY(30px);
+    transition-delay: .3s;
+    transition: all .3s ease;
+}
+
+.certificates .description p {
+    color: rgba(255, 255, 255, 0.8);
+    padding-top: 5px;
+}
+
+.certificates .description h4 {
+    text-transform: uppercase;
+    color: white;
+}
+
+.certificates input {
+    display: none;
+}
+
+.certificates input:checked + label {
+    width: 600px;
+}
+
+.certificates input:checked + label .description {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+}
+
+/* Certificate card backgrounds - updating background color to #f8f9fb */
+.certificates .card[for="c1"] {
+    background-image: url('Image Carousel/Elements of AI.png');
+    background-size: cover;
+    background-position: center;
+    background-color: #f8f9fb;
+}
+.certificates .card[for="c2"] {
+    background-image: url('Image Carousel/Arduino.jpg');
+    background-size: cover;
+    background-position: center;
+    background-color: #f8f9fb;
+}
+.certificates .card[for="c3"] {
+    background-image: url('Image Carousel/Python Intermediate.jpg');
+    background-size: cover;
+    background-position: center;
+    background-color: #f8f9fb;
+}
+.certificates .card[for="c4"] {
+    background-image: url('Image Carousel/Python.png');
+    background-size: cover;
+    background-position: center;
+    background-color: #f8f9fb;
+}
+.certificates .card[for="c5"] {
+    background-image: url('Image Carousel/Subnetting.jpg');
+    background-size: cover;
+    background-position: center;
+    background-color: #f8f9fb;
+}
+.certificates .card[for="c6"] {
+    background-image: url('Image Carousel/WordPress Advanced.jpg');
+    background-size: cover;
+    background-position: center;
+    background-color: #f8f9fb;
+}
+.certificates .card[for="c7"] {
+    background-image: url('Image Carousel/WordPress.jpg');
+    background-size: cover;
+    background-position: center;
+    background-color: #f8f9fb;
+}
+
+/* Hide the description elements */
+.certificates .card > .row > .icon,
+.certificates .card > .row > .description {
+    display: none;
+}
+
+/* Adjust card expansion to just display the full image */
+.certificates input:checked + label {
+    width: 600px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .certificates input:checked + label {
+        width: 300px;
+        height: 200px;
+    }
+}
+
+/* Enhanced Responsive Styles */
+/* Large devices (laptops/desktops, up to 1200px) */
+@media (max-width: 1200px) {
+    :root {
+        --max-width: 1000px;
+    }
+
+    .hero-content h1,
+    .hero-content .name {
+        font-size: 42px;
+    }
+
+    .hero-content .title {
+        font-size: 22px;
+    }
+
+    .projects-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+
+    .contact-content {
+        gap: 30px;
+    }
+}
+
+/* Medium devices (tablets, up to 992px) */
+@media (max-width: 992px) {
+    :root {
+        --max-width: 800px;
+        --body-padding: 1.5rem;
+    }
+
+    .hero {
+        padding-top: 120px;
+    }
+
+    .hero-content {
+        padding-left: 80px;
+    }
+
+    .hero-image::before {
+        width: 300px;
+        height: 420px;
+    }
+
+    .hero-image img {
+        width: 270px;
+        height: 390px;
+    }
+
+    .about-content {
+        gap: 40px;
+    }
+
+    .skill-grid {
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    }
+
+    .contact-content {
+        flex-direction: column;
+    }
+
+    .contact-info, .contact-form {
+        width: 100%;
+        max-width: 600px;
+        margin: 0 auto;
+    }
+}
+
+/* Small devices (landscape phones, up to 768px) */
+@media (max-width: 768px) {
+    :root {
+        --body-padding: 1rem;
+    }
+
+    body {
+        padding: var(--body-padding);
+    }
+
+    header {
+        padding: 12px 20px;
+    }
+
+    .hero {
+        flex-direction: column;
+        text-align: center;
+        padding: 100px 20px 50px;
+        min-height: auto;
+    }
+
+    .social-sidebar {
+        position: static;
+        flex-direction: row;
+        justify-content: center;
+        gap: 15px;
+        margin-bottom: 30px;
+    }
+
+    .hero-content {
+        padding-left: 0;
+        margin-bottom: 40px;
+    }
+
+    .hero-content h1,
+    .hero-content .name {
+        font-size: 36px;
+    }
+
+    .hero-content .title {
+        font-size: 20px;
+    }
+
+    .hero-image {
+        max-width: 300px;
+        margin: 0 auto;
+    }
+
+    .section-header h2 {
+        font-size: 30px;
+    }
+
+    .journey-tabs {
+        gap: 15px;
+    }
+
+    .tab {
+        min-width: calc(50% - 10px);
+        padding: 12px;
+    }
+
+    .certificates .container {
+        height: 300px;
+    }
+
+    .certificates .card {
+        width: 60px;
+    }
+
+    .certificates input:checked + label {
+        width: 300px;
+    }
+
+    .certificates .card > .row > .description {
+        width: 220px;
+    }
+
+    .projects-filter {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .filter-btn {
+        min-width: calc(50% - 5px);
+        padding: 10px;
+    }
+}
+
+/* Extra small devices (phones, up to 576px) */
+@media (max-width: 576px) {
+    :root {
+        --body-padding: 0.75rem;
+    }
+
+    header {
+        padding: 10px 15px;
+    }
+
+    .hero-content h1,
+    .hero-content .name {
+        font-size: 32px;
+    }
+
+    .hero-content .title {
+        font-size: 18px;
+    }
+
+    .hero-image::before {
+        width: 240px;
+        height: 340px;
+    }
+
+    .hero-image img {
+        width: 220px;
+        height: 320px;
+    }
+
+    .section-header h2 {
+        font-size: 26px;
+    }
+
+    .about-content {
+        gap: 30px;
+    }
+
+    .about-image {
+        flex: 0 0 200px;
+        height: 200px;
+    }
+
+    .skill-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .certificates .container {
+        height: 250px;
+    }
+
+    .certificates .card {
+        width: 50px;
+    }
+
+    .certificates input:checked + label {
+        width: 300px;
+    }
+
+    .certificates .card > .row > .description {
+        width: 220px;
+    }
+
+    .projects-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .contact-form .form-group input,
+    .contact-form .form-group textarea {
+        padding: 10px;
+        font-size: 14px;
+    }
+
+    .social-links {
+        gap: 10px;
+    }
+
+    .social-link {
+        width: 35px;
+        height: 35px;
+        font-size: 16px;
+    }
+}
+
+/* Fix for very small devices (iPhone SE, Galaxy Fold, etc.) */
+@media (max-width: 360px) {
+    :root {
+        --body-padding: 0.5rem;
+    }
+
+    .hero-content h1,
+    .hero-content .name {
+        font-size: 28px;
+    }
+
+    .hero-content .title {
+        font-size: 16px;
+    }
+
+    .hero-image::before {
+        width: 200px;
+        height: 280px;
+    }
+
+    .hero-image img {
+        width: 180px;
+        height: 260px;
+    }
+
+    .section-header h2 {
+        font-size: 24px;
+    }
+
+    .certificates .container {
+        height: 200px;
+    }
+
+    .certificates .card {
+        width: 40px;
+    }
+
+    .certificates input:checked + label {
+        width: 260px;
+    }
+
+    .certificates .card > .row > .description {
+        width: 180px;
+    }
+
+    .filter-btn {
+        min-width: 100%;
+    }
+}
+
+/* Fix for landscape orientation */
+@media (max-height: 600px) and (orientation: landscape) {
+    .hero {
+        min-height: auto;
+        padding: 80px 20px 40px;
+    }
+
+    .hero-image::before {
+        width: 220px;
+        height: 300px;
+    }
+
+    .hero-image img {
+        width: 200px;
+        height: 280px;
+    }
+
+    .certificates .container {
+        height: 250px;
+    }
+}
+
+/* High-resolution screens (4K, Retina) */
+@media (min-width: 2560px) {
+    :root {
+        --max-width: 1800px;
+    }
+
+    html {
+        font-size: 18px;
+    }
+
+    .hero-content h1,
+    .hero-content .name {
+        font-size: 64px;
+    }
+
+    .hero-content .title {
+        font-size: 32px;
+    }
+
+    .section-header h2 {
+        font-size: 48px;
+    }
+}
+
+/* Print styles for resumes/portfolios */
+@media print {
+    .hero {
+        page-break-after: always;
+    }
+
+    .projects-grid {
+        page-break-inside: avoid;
+    }
+
+    .contact-form,
+    .social-sidebar,
+    .hamburger {
+        display: none;
     }
 } 

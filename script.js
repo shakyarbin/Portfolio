@@ -103,7 +103,10 @@ filterButtons.forEach(button => {
             card.style.animation = 'none';
             card.offsetHeight; // Trigger reflow
             
-            if (filterValue === 'all' || card.getAttribute('data-category') === filterValue) {
+            const cardCategories = card.getAttribute('data-category').split(' ');
+            
+            if (filterValue === 'all' && cardCategories.includes('all') || 
+                cardCategories.includes(filterValue)) {
                 card.classList.remove('hidden');
                 // Re-trigger animation
                 card.style.animation = '';
@@ -344,4 +347,25 @@ document.querySelectorAll('.section-header').forEach(header => {
     
     // Start observing
     sectionObserver.observe(header);
+});
+
+// Apply "All" filter by default when the page loads
+document.addEventListener('DOMContentLoaded', function() {
+    // Apply the filter for "all" category
+    const allFilterBtn = document.querySelector('.filter-btn[data-filter="all"]');
+    
+    // Make sure all cards with "all" in their data-category are shown
+    document.querySelectorAll('.project-card').forEach(card => {
+        const cardCategories = card.getAttribute('data-category').split(' ');
+        
+        if (cardCategories.includes('all')) {
+            card.classList.remove('hidden');
+        } else {
+            card.classList.add('hidden');
+        }
+    });
+    
+    // Ensure the "all" button is active
+    document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+    allFilterBtn.classList.add('active');
 }); 
