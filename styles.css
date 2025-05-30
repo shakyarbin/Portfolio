@@ -2001,59 +2001,38 @@ footer {
 
 .certificates .card {
     width: 80px;
-    border-radius: .75rem;
-    background-size: cover;
-    background-position: center;
+    border-radius: 2rem;
     cursor: pointer;
     overflow: hidden;
-    border-radius: 2rem;
     margin: 0 10px;
     display: flex;
-    align-items: flex-end;
+    align-items: center;
     transition: .6s cubic-bezier(.28,-0.03,0,.99);
     box-shadow: 0px 10px 30px -5px rgba(0,0,0,0.3);
+    position: relative;
 }
 
-.certificates .card > .row {
-    color: white;
+.certificates .card .row {
+    width: 100%;
+    height: 100%;
     display: flex;
-    flex-wrap: nowrap;
-}
-
-.certificates .card > .row > .icon {
-    background: var(--primary-color);
-    color: white;
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    display: flex;
-    justify-content: center;
     align-items: center;
-    margin: 15px;
-    font-size: 18px;
 }
 
-.certificates .card > .row > .description {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    overflow: hidden;
-    height: 80px;
-    width: 520px;
-    opacity: 0;
-    transform: translateY(30px);
-    transition-delay: .3s;
-    transition: all .3s ease;
+.certificates .certificate-image {
+    width: 100%;
+    height: 100%;
+    position: relative;
 }
 
-.certificates .description p {
-    color: rgba(255, 255, 255, 0.8);
-    padding-top: 5px;
+.certificates .certificate-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
-.certificates .description h4 {
-    text-transform: uppercase;
-    color: white;
+.certificates .description {
+    display: none; /* Hide the description overlay */
 }
 
 .certificates input {
@@ -2064,71 +2043,44 @@ footer {
     width: 600px;
 }
 
+/* Remove the description transform and opacity transitions */
 .certificates input:checked + label .description {
-    opacity: 1 !important;
-    transform: translateY(0) !important;
-}
-
-/* Certificate card backgrounds - updating background color to #f8f9fb */
-.certificates .card[for="c1"] {
-    background-image: url('Image Carousel/Elements of AI.png');
-    background-size: cover;
-    background-position: center;
-    background-color: #f8f9fb;
-}
-.certificates .card[for="c2"] {
-    background-image: url('Image Carousel/Arduino.jpg');
-    background-size: cover;
-    background-position: center;
-    background-color: #f8f9fb;
-}
-.certificates .card[for="c3"] {
-    background-image: url('Image Carousel/Python Intermediate.jpg');
-    background-size: cover;
-    background-position: center;
-    background-color: #f8f9fb;
-}
-.certificates .card[for="c4"] {
-    background-image: url('Image Carousel/Python.png');
-    background-size: cover;
-    background-position: center;
-    background-color: #f8f9fb;
-}
-.certificates .card[for="c5"] {
-    background-image: url('Image Carousel/Subnetting.jpg');
-    background-size: cover;
-    background-position: center;
-    background-color: #f8f9fb;
-}
-.certificates .card[for="c6"] {
-    background-image: url('Image Carousel/WordPress Advanced.jpg');
-    background-size: cover;
-    background-position: center;
-    background-color: #f8f9fb;
-}
-.certificates .card[for="c7"] {
-    background-image: url('Image Carousel/WordPress.jpg');
-    background-size: cover;
-    background-position: center;
-    background-color: #f8f9fb;
-}
-
-/* Hide the description elements */
-.certificates .card > .row > .icon,
-.certificates .card > .row > .description {
     display: none;
 }
 
-/* Adjust card expansion to just display the full image */
-.certificates input:checked + label {
-    width: 600px;
+@media (max-width: 768px) {
+    .certificates .container {
+        height: 300px;
+    }
+    
+    .certificates input:checked + label {
+        width: 400px;
+    }
+    
+    .certificates .description {
+        padding: 15px;
+    }
+    
+    .certificates .description h4 {
+        font-size: 16px;
+    }
+    
+    .certificates .description p {
+        font-size: 12px;
+    }
 }
 
-/* Responsive adjustments */
-@media (max-width: 768px) {
-    .certificates input:checked + label {
+@media (max-width: 480px) {
+    .certificates .container {
+        height: 250px;
+    }
+    
+.certificates input:checked + label {
         width: 300px;
-        height: 200px;
+    }
+    
+    .certificates .description {
+        padding: 10px;
     }
 }
 
