@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    <meta name="description" content="Arbin Shakya - Garbage Classifier">
+    <meta name="keywords" content="Arduino, Robotics, Programming, Automation, ESP32, IoT">
+    <meta name="author" content="Arbin Shakya">
+    <title>Garbage Classifier | Arbin Shakya</title>
+    <link rel="icon" type="image/png" href="../Favicon/LOGO.png">
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="project-styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../index.html#about">About</a></li>
+                <li><a href="../index.html#journey">Experience</a></li>
+                <li><a href="../index.html#skills">Skills</a></li>
+                <li><a href="../index.html#projects" class="active">Projects</a></li>
+                <li><a href="../index.html#contact">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="hamburger">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+    </header>
+
+    <section class="project-hero">
+        <div class="container">
+            <h1>
+                <span class="title-wrapper">
+                    <span class="rc-title" data-text="Garbage Classifier"></span>
+                    <span class="title-cursor"></span>
+                </span>
+            </h1>
+                         <div class="project-tags">
+                 <span class="tag" style="animation-delay: 0.5s">AI/ML</span>
+                 <span class="tag" style="animation-delay: 0.6s">ESP32</span>
+                 <span class="tag" style="animation-delay: 0.7s">IoT</span>
+                 <span class="tag" style="animation-delay: 0.8s">Robotics</span>
+                 <span class="tag" style="animation-delay: 0.9s">Web Development</span>
+             </div>
+        </div>
+    </section>
+
+    <section class="project-details">
+        <div class="container">
+            <div class="project-info-grid">
+                <div class="project-image">
+                    <img src="../Projects Images/SPARC.png" alt="Garbage Classifier Demo">
+                </div>
+                <div class="project-overview">
+                    <h2>Project Overview</h2>
+                    <p>An automated waste segregation system developed during SPARC (St. Xavier's Prototyping, Automation and Robotics Club) Hackathon that uses ESP32, ultrasonic sensors, and servo motors to classify and sort waste items into appropriate bins.</p>
+                    <div class="project-meta">
+                        <div class="meta-item">
+                            <i class="fas fa-calendar"></i>
+                            <span>Completed: July 2024</span>
+                        </div>
+                        <div class="meta-item">
+                            <i class="fas fa-code-branch"></i>
+                            <span>Status: Completed</span>
+                        </div>
+                        <div class="meta-item">
+                            <i class="fas fa-award"></i>
+                            <span>Event: SPARC Fest 2025</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-content">
+                                 <div class="content-section">
+                     <h3>Project Description</h3>
+                     <p>The Garbage Classifier is a comprehensive AI-powered waste segregation system that combines computer vision, machine learning, and robotics to automatically classify and sort waste items. The complete system consists of three main components:</p>
+                     <ol>
+                         <li><strong>Mobile Web Interface:</strong> Users can capture photos of waste items using their phone's camera</li>
+                         <li><strong>AI Server:</strong> Processes uploaded images using a trained machine learning model</li>
+                         <li><strong>ESP32 Hardware:</strong> Controls the physical sorting mechanism based on AI classification</li>
+                     </ol>
+                     <p>The system creates a seamless workflow where users simply take a photo of waste items, the AI model classifies them as Bio or Non-Bio, and the ESP32 automatically sorts them into appropriate bins using servo-controlled mechanisms.</p>
+                 </div>
+
+                <div class="content-section">
+                    <h3>Technical Implementation</h3>
+                    <p>The system integrates multiple technologies to create a seamless waste classification experience:</p>
+                    
+                                         <h4>System Components:</h4>
+                     <ul class="feature-list">
+                         <li><i class="fas fa-mobile-alt"></i><span><strong>Mobile Web Interface:</strong> Camera-enabled web application for photo capture and upload</span></li>
+                         <li><i class="fas fa-server"></i><span><strong>AI Server (Laptop):</strong> Runs the trained machine learning model and handles image processing</span></li>
+                         <li><i class="fas fa-brain"></i><span><strong>Custom AI Model:</strong> Trained machine learning model for waste classification</span></li>
+                         <li><i class="fas fa-microchip"></i><span><strong>ESP32 Microcontroller:</strong> Handles sensor input, network communication, and servo control</span></li>
+                         <li><i class="fas fa-satellite-dish"></i><span><strong>Ultrasonic Sensor (HC-SR04):</strong> Detects object presence and distance</span></li>
+                         <li><i class="fas fa-cog"></i><span><strong>Servo Motor:</strong> Controls sorting mechanism for bin direction</span></li>
+                         <li><i class="fas fa-wifi"></i><span><strong>Wi-Fi Module:</strong> Enables network connectivity for data fetching</span></li>
+                         <li><i class="fas fa-recycle"></i><span><strong>Sorting Bins:</strong> Bio and Non-Bio waste containers</span></li>
+                     </ul>
+
+                                         <h4>System Architecture:</h4>
+                     <p>The complete system implements a three-tier architecture with the following workflow:</p>
+                     <ol>
+                         <li><strong>Image Capture:</strong> Mobile web interface allows users to capture photos of waste items</li>
+                         <li><strong>Image Upload:</strong> Photos are sent to the AI server via HTTP requests</li>
+                         <li><strong>AI Processing:</strong> Trained machine learning model classifies the image as Bio (0) or Non-Bio (1)</li>
+                         <li><strong>Result Storage:</strong> Classification result is written to a text file on the server</li>
+                         <li><strong>Hardware Control:</strong> ESP32 reads the text file and controls servo for sorting</li>
+                         <li><strong>Physical Sorting:</strong> Servo motor directs items to appropriate bins</li>
+                     </ol>
+
+                    <!-- Enhanced Code Editor Component -->
+                    <div class="code-editor">
+                        <div class="header">
+                            <span class="title">garbage_classifier.ino</span>
+                            <div class="editor-actions">
+                                <button class="action-btn copy-btn" onclick="copyCode(this)">
+                                    <i class="far fa-copy"></i>
+                                    <span>Copy</span>
+                                </button>
+                                <button class="action-btn download-btn" onclick="downloadCode(this)">
+                                    <i class="fas fa-download"></i>
+                                </button>
+                                <button class="action-btn close-btn">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="editor-content">
+                            <div class="copy-message">Copied to clipboard!</div>
+                            <div class="line-numbers">
+                                <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
+                                <span>6</span><span>7</span><span>8</span><span>9</span><span>10</span>
+                                <span>11</span><span>12</span><span>13</span><span>14</span><span>15</span>
+                                <span>16</span><span>17</span><span>18</span><span>19</span><span>20</span>
+                                <span>21</span><span>22</span><span>23</span><span>24</span><span>25</span>
+                                <span>26</span><span>27</span><span>28</span><span>29</span><span>30</span>
+                                <span>31</span><span>32</span><span>33</span><span>34</span><span>35</span>
+                                <span>36</span><span>37</span><span>38</span><span>39</span><span>40</span>
+                                <span>41</span><span>42</span><span>43</span><span>44</span><span>45</span>
+                                <span>46</span><span>47</span><span>48</span><span>49</span><span>50</span>
+                                <span>51</span><span>52</span><span>53</span><span>54</span><span>55</span>
+                                <span>56</span><span>57</span><span>58</span><span>59</span><span>60</span>
+                                <span>61</span><span>62</span><span>63</span><span>64</span><span>65</span>
+                                <span>66</span><span>67</span><span>68</span><span>69</span><span>70</span>
+                                <span>71</span><span>72</span><span>73</span><span>74</span><span>75</span>
+                                <span>76</span><span>77</span><span>78</span><span>79</span><span>80</span>
+                                <span>81</span><span>82</span><span>83</span><span>84</span><span>85</span>
+                                <span>86</span><span>87</span><span>88</span><span>89</span><span>90</span>
+                                <span>91</span><span>92</span><span>93</span><span>94</span><span>95</span>
+                                <span>96</span><span>97</span><span>98</span><span>99</span><span>100</span>
+                            </div>
+                            <code class="code">
+                                <p><span class="color-1">#include</span> &lt;ESP32Servo.h&gt;</p>
+                                <p><span class="color-1">#include</span> &lt;WiFi.h&gt;</p>
+                                <p><span class="color-1">#include</span> &lt;HTTPClient.h&gt;</p>
+                                <p></p>
+                                <p><span class="color-1">//</span> Wi-Fi credentials</p>
+                                <p><span class="color-1">const</span> <span class="color-0">char</span>* ssid = <span class="color-4">"YOUR_SSID"</span>;</p>
+                                <p><span class="color-1">const</span> <span class="color-0">char</span>* password = <span class="color-4">"YOUR_PASSWORD"</span>;</p>
+                                <p></p>
+                                <p><span class="color-1">//</span> URL to fetch the value</p>
+                                <p><span class="color-1">const</span> <span class="color-0">String</span> url = <span class="color-4">"http://172.16.2.88:8000/display.txt"</span>;</p>
+                                <p></p>
+                                <p><span class="color-1">//</span> Servo setup</p>
+                                <p><span class="color-0">Servo</span> myServo;</p>
+                                <p><span class="color-1">const</span> <span class="color-0">int</span> servoPin = <span class="color-3">13</span>;</p>
+                                <p></p>
+                                <p><span class="color-1">//</span> Ultrasonic sensor pins</p>
+                                <p><span class="color-1">#define</span> TRIG_PIN <span class="color-3">4</span></p>
+                                <p><span class="color-1">#define</span> ECHO_PIN <span class="color-3">2</span></p>
+                                <p></p>
+                                <p><span class="color-0">void</span> <span class="color-0">setup</span>() {</p>
+                                <p class="property">  Serial.begin(<span class="color-3">115200</span>);</p>
+                                <p></p>
+                                <p class="property">  <span class="color-1">//</span> Servo initialization</p>
+                                <p class="property">  myServo.attach(servoPin);</p>
+                                <p class="property">  myServo.write(<span class="color-3">90</span>);</p>
+                                <p class="property">  Serial.println(<span class="color-4">"Servo initialized to 90 degrees"</span>);</p>
+                                <p></p>
+                                <p class="property">  <span class="color-1">//</span> Ultrasonic sensor pin setup</p>
+                                <p class="property">  pinMode(TRIG_PIN, OUTPUT);</p>
+                                <p class="property">  pinMode(ECHO_PIN, INPUT);</p>
+                                <p></p>
+                                <p class="property">  <span class="color-1">//</span> Wi-Fi connection</p>
+                                <p class="property">  WiFi.begin(ssid, password);</p>
+                                <p class="property">  Serial.print(<span class="color-4">"Connecting to WiFi"</span>);</p>
+                                <p class="property">  <span class="color-1">while</span> (WiFi.status() != WL_CONNECTED) {</p>
+                                <p class="property">    delay(<span class="color-3">500</span>);</p>
+                                <p class="property">    Serial.print(<span class="color-4">"."</span>);</p>
+                                <p class="property">  }</p>
+                                <p class="property">  Serial.println(<span class="color-4">"\nWiFi connected"</span>);</p>
+                                <p></p>
+                                <p class="property">  Serial.print(<span class="color-4">"ESP32 IP: "</span>);</p>
+                                <p class="property">  Serial.println(WiFi.localIP());</p>
+                                <p>}</p>
+                                <p></p>
+                                <p><span class="color-0">float</span> <span class="color-0">readDistanceCM</span>() {</p>
+                                <p class="property">  digitalWrite(TRIG_PIN, LOW);</p>
+                                <p class="property">  delayMicroseconds(<span class="color-3">2</span>);</p>
+                                <p class="property">  digitalWrite(TRIG_PIN, HIGH);</p>
+                                <p class="property">  delayMicroseconds(<span class="color-3">10</span>);</p>
+                                <p class="property">  digitalWrite(TRIG_PIN, LOW);</p>
+                                <p></p>
+                                <p class="property">  <span class="color-0">long</span> duration = pulseIn(ECHO_PIN, HIGH, <span class="color-3">30000</span>);</p>
+                                <p class="property">  <span class="color-0">float</span> distance = duration * <span class="color-3">0.034</span> / <span class="color-3">2</span>;</p>
+                                <p></p>
+                                <p class="property">  <span class="color-1">if</span> (duration == <span class="color-3">0</span>) {</p>
+                                <p class="property">    Serial.println(<span class="color-4">"Ultrasonic timeout"</span>);</p>
+                                <p class="property">    <span class="color-1">return</span> <span class="color-3">999</span>;</p>
+                                <p class="property">  }</p>
+                                <p></p>
+                                <p class="property">  <span class="color-1">return</span> distance;</p>
+                                <p>}</p>
+                                <p></p>
+                                <p><span class="color-0">void</span> <span class="color-0">loop</span>() {</p>
+                                <p class="property">  <span class="color-0">float</span> distance = readDistanceCM();</p>
+                                <p class="property">  Serial.print(<span class="color-4">"Distance: "</span>);</p>
+                                <p class="property">  Serial.print(distance);</p>
+                                <p class="property">  Serial.println(<span class="color-4">" cm"</span>);</p>
+                                <p></p>
+                                <p class="property">  <span class="color-1">if</span> (distance &lt; <span class="color-3">50.0</span>) {</p>
+                                <p class="property">    <span class="color-1">if</span> (WiFi.status() == WL_CONNECTED) {</p>
+                                <p class="property">      WiFiClient client;</p>
+                                <p class="property">      HTTPClient http;</p>
+                                <p></p>
+                                <p class="property">      http.begin(client, url);</p>
+                                <p class="property">      http.addHeader(<span class="color-4">"User-Agent"</span>, <span class="color-4">"ESP32"</span>);</p>
+                                <p class="property">      <span class="color-0">int</span> httpResponseCode = http.GET();</p>
+                                <p></p>
+                                <p class="property">      <span class="color-1">if</span> (httpResponseCode == <span class="color-3">200</span>) {</p>
+                                <p class="property">        <span class="color-0">String</span> value = http.getString();</p>
+                                <p class="property">        value.trim();</p>
+                                <p></p>
+                                <p class="property">        Serial.print(<span class="color-4">"Received value: "</span>);</p>
+                                <p class="property">        Serial.println(value);</p>
+                                <p></p>
+                                <p class="property">        <span class="color-1">if</span> (value == <span class="color-4">"0"</span>) {</p>
+                                <p class="property">          myServo.write(<span class="color-3">70</span>);</p>
+                                <p class="property">          Serial.println(<span class="color-4">"Servo set to 0 degrees"</span>);</p>
+                                <p class="property">          delay(<span class="color-3">1000</span>);</p>
+                                <p class="property">          myServo.write(<span class="color-3">90</span>);</p>
+                                <p class="property">        } <span class="color-1">else</span> <span class="color-1">if</span> (value == <span class="color-4">"1"</span>) {</p>
+                                <p class="property">          myServo.write(<span class="color-3">150</span>);</p>
+                                <p class="property">          Serial.println(<span class="color-4">"Servo set to 180 degrees"</span>);</p>
+                                <p class="property">          delay(<span class="color-3">1000</span>);</p>
+                                <p class="property">          myServo.write(<span class="color-3">90</span>);</p>
+                                <p class="property">        } <span class="color-1">else</span> {</p>
+                                <p class="property">          Serial.println(<span class="color-4">"Invalid value in text file"</span>);</p>
+                                <p class="property">        }</p>
+                                <p class="property">      } <span class="color-1">else</span> {</p>
+                                <p class="property">        Serial.print(<span class="color-4">"HTTP error: "</span>);</p>
+                                <p class="property">        Serial.println(httpResponseCode);</p>
+                                <p class="property">      }</p>
+                                <p></p>
+                                <p class="property">      http.end();</p>
+                                <p class="property">    } <span class="color-1">else</span> {</p>
+                                <p class="property">      Serial.println(<span class="color-4">"WiFi not connected."</span>);</p>
+                                <p class="property">    }</p>
+                                <p></p>
+                                <p class="property">    delay(<span class="color-3">2000</span>);</p>
+                                <p class="property">  }</p>
+                                <p></p>
+                                <p class="property">  delay(<span class="color-3">500</span>);</p>
+                                <p>}</p>
+                            </code>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content-section">
+                    <h3>Project Hardware</h3>
+                    <p>The system uses a combination of sensors and actuators to create an automated waste classification system:</p>
+                    
+                    <div class="project-images-container">
+                        <div class="project-image-card">
+                            <img src="../Projects Images/SPARC Demo.jpeg" alt="SPARC Demo Setup" class="project-detail-image">
+                            <p class="image-caption">Live demonstration at SPARC Fest 2025 showing the automated waste segregation system in action</p>
+                        </div>
+                        
+                        <div class="project-image-card">
+                            <img src="../Projects Images/SPARC Prize.jpeg" alt="SPARC Prize" class="project-detail-image">
+                            <p class="image-caption">Team "Built diff" receiving the SPARC Fest 2025 Category Winner award for Environmental Sustainability</p>
+                        </div>
+                    </div>
+                </div>
+
+                                 <div class="content-section">
+                     <h3>Key Features</h3>
+                     <ul class="feature-list">
+                         <li>
+                             <i class="fas fa-check-circle"></i>
+                             <span><strong>AI-Powered Classification:</strong> Custom trained machine learning model for accurate waste classification</span>
+                         </li>
+                         <li>
+                             <i class="fas fa-check-circle"></i>
+                             <span><strong>Mobile Web Interface:</strong> User-friendly camera interface for easy photo capture and upload</span>
+                         </li>
+                         <li>
+                             <i class="fas fa-check-circle"></i>
+                             <span><strong>Real-time Object Detection:</strong> Ultrasonic sensor continuously monitors for objects within 50cm range</span>
+                         </li>
+                         <li>
+                             <i class="fas fa-check-circle"></i>
+                             <span><strong>Server-based Processing:</strong> Centralized AI server handles image processing and classification</span>
+                         </li>
+                         <li>
+                             <i class="fas fa-check-circle"></i>
+                             <span><strong>Automated Sorting:</strong> Servo motor controls sorting mechanism to direct items to appropriate bins</span>
+                         </li>
+                         <li>
+                             <i class="fas fa-check-circle"></i>
+                             <span><strong>Wi-Fi Connectivity:</strong> Seamless communication between mobile, server, and ESP32 hardware</span>
+                         </li>
+                         <li>
+                             <i class="fas fa-check-circle"></i>
+                             <span><strong>Error Handling:</strong> Robust timeout and error detection for all system components</span>
+                         </li>
+                     </ul>
+                 </div>
+
+                                 <div class="content-section">
+                     <h3>Development Process</h3>
+                     <p>The project was developed during the SPARC Fest 2025 event with limited time constraints:</p>
+                     <ol>
+                         <li><strong>AI Model Training:</strong> Developed and trained a custom machine learning model for waste classification</li>
+                         <li><strong>Server Development:</strong> Created web server to handle image uploads and run AI inference</li>
+                         <li><strong>Mobile Interface:</strong> Built camera-enabled web application for photo capture and upload</li>
+                         <li><strong>Hardware Setup:</strong> Assembled ESP32, ultrasonic sensor, servo motor, and sorting bins</li>
+                         <li><strong>System Integration:</strong> Connected mobile interface, AI server, and ESP32 hardware</li>
+                         <li><strong>Testing & Demo:</strong> Conducted live demonstration at SPARC Fest 2025</li>
+                     </ol>
+                 </div>
+
+                <div class="content-section">
+                    <h3>Challenges & Solutions</h3>
+                    <ul class="feature-list">
+                        <li>
+                            <i class="fas fa-exclamation-triangle" style="color: #ff9800;"></i>
+                            <span><strong>Challenge:</strong> Limited development time during SPARC Fest<br>
+                            <strong>Solution:</strong> Focused on core functionality and reliable demonstration</span>
+                        </li>
+                                                 <li>
+                             <i class="fas fa-exclamation-triangle" style="color: #ff9800;"></i>
+                             <span><strong>Challenge:</strong> Training accurate AI model with limited dataset<br>
+                             <strong>Solution:</strong> Used data augmentation and transfer learning techniques</span>
+                         </li>
+                         <li>
+                             <i class="fas fa-exclamation-triangle" style="color: #ff9800;"></i>
+                             <span><strong>Challenge:</strong> Real-time image processing and classification<br>
+                             <strong>Solution:</strong> Optimized server architecture for fast inference</span>
+                         </li>
+                         <li>
+                             <i class="fas fa-exclamation-triangle" style="color: #ff9800;"></i>
+                             <span><strong>Challenge:</strong> Network dependency for classification<br>
+                             <strong>Solution:</strong> Implemented robust error handling and timeout mechanisms</span>
+                         </li>
+                        <li>
+                            <i class="fas fa-exclamation-triangle" style="color: #ff9800;"></i>
+                            <span><strong>Challenge:</strong> Precise servo control for accurate sorting<br>
+                            <strong>Solution:</strong> Calibrated servo angles and added delay for stable movement</span>
+                        </li>
+                    </ul>
+                </div>
+
+                                 <div class="content-section">
+                     <h3>Results & Impact</h3>
+                     <p>The Garbage Classifier project successfully demonstrated the potential of AI, IoT, and robotics in environmental sustainability. The complete system was able to:</p>
+                     <ul class="feature-list">
+                         <li><i class="fas fa-trophy"></i><span>Win the SPARC Fest 2025 Category Winner award for Environmental Sustainability</span></li>
+                         <li><i class="fas fa-brain"></i><span>Successfully implement AI-powered waste classification with custom trained model</span></li>
+                         <li><i class="fas fa-mobile-alt"></i><span>Create user-friendly mobile interface for seamless photo capture and upload</span></li>
+                         <li><i class="fas fa-server"></i><span>Develop robust server architecture for real-time image processing</span></li>
+                         <li><i class="fas fa-users"></i><span>Showcase practical application of ESP32, AI, and sensor integration</span></li>
+                         <li><i class="fas fa-lightbulb"></i><span>Inspire further development in automated waste management systems</span></li>
+                         <li><i class="fas fa-award"></i><span>Earn recognition for innovative use of AI and robotics in environmental conservation</span></li>
+                     </ul>
+                 </div>
+
+                                 <div class="content-section">
+                     <h3>Future Improvements</h3>
+                     <ul class="feature-list">
+                         <li>
+                             <i class="fas fa-lightbulb"></i>
+                             <span>Enhance AI model with larger dataset and advanced architectures</span>
+                         </li>
+                         <li>
+                             <i class="fas fa-lightbulb"></i>
+                             <span>Implement edge computing for local AI processing on ESP32</span>
+                         </li>
+                         <li>
+                             <i class="fas fa-lightbulb"></i>
+                             <span>Add multiple sensors (camera, weight sensor) for better accuracy</span>
+                         </li>
+                         <li>
+                             <i class="fas fa-lightbulb"></i>
+                             <span>Develop mobile app with offline capabilities</span>
+                         </li>
+                         <li>
+                             <i class="fas fa-lightbulb"></i>
+                             <span>Scale up for industrial waste management applications</span>
+                         </li>
+                         <li>
+                             <i class="fas fa-lightbulb"></i>
+                             <span>Integrate cloud-based AI services for enhanced classification</span>
+                         </li>
+                     </ul>
+                 </div>
+            </div>
+        </div>
+    </section>
+
+    <button onclick="scrollToTop()" class="back-to-top-button">
+        <svg class="svgIcon" viewBox="0 0 384 512">
+            <path d="M214.6 41.4c-12.5-12.5-32.8-12.5-45.3 0l-160 160c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 141.2V448c0 17.7 14.3 32 32 32s32-14.3 32-32V141.2L329.4 246.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-160-160z"></path>
+        </svg>
+    </button>
+
+    <div class="back-to-projects">
+        <a href="../index.html#projects" class="spidey-back-btn">
+            <div class="green-slide-bg">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" height="25px" width="25px">
+                    <path d="M224 480h640a32 32 0 1 1 0 64H224a32 32 0 0 1 0-64z" fill="#000000"></path>
+                    <path d="m237.248 512 265.408 265.344a32 32 0 0 1-45.312 45.312l-288-288a32 32 0 0 1 0-45.312l288-288a32 32 0 1 1 45.312 45.312L237.248 512z" fill="#000000"></path>
+                </svg>
+            </div>
+            <p class="btn-label">Go Back</p>
+        </a>
+    </div>
+
+    <script src="../script.js"></script>
+    <script>
+        function copyCode(button) {
+            const codeEditor = button.closest('.code-editor');
+            const codeElement = codeEditor.querySelector('.code');
+            
+            const tempElement = document.createElement('textarea');
+            
+            let codeText = '';
+            codeElement.querySelectorAll('p').forEach(line => {
+                codeText += line.textContent + '\n';
+            });
+            
+            tempElement.value = codeText;
+            document.body.appendChild(tempElement);
+            tempElement.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempElement);
+            
+            const copyMessage = codeEditor.querySelector('.copy-message');
+            copyMessage.classList.add('show');
+            
+            setTimeout(() => {
+                copyMessage.classList.remove('show');
+            }, 2000);
+        }
+        
+        function downloadCode(button) {
+            const codeEditor = button.closest('.code-editor');
+            const codeElement = codeEditor.querySelector('.code');
+            const filename = codeEditor.querySelector('.title').textContent;
+            
+            let codeText = '';
+            codeElement.querySelectorAll('p').forEach(line => {
+                codeText += line.textContent + '\n';
+            });
+            
+            const blob = new Blob([codeText], {type: 'text/plain'});
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = filename;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            
+            const copyMessage = codeEditor.querySelector('.copy-message');
+            copyMessage.textContent = 'Downloaded!';
+            copyMessage.classList.add('show');
+            
+            setTimeout(() => {
+                copyMessage.classList.remove('show');
+                copyMessage.textContent = 'Copied to clipboard!';
+            }, 2000);
+        }
+        
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            const backToTopButton = document.querySelector('.back-to-top-button');
+            if (backToTopButton) {
+                backToTopButton.classList.remove('visible');
+            }
+        });
+        
+        window.addEventListener('scroll', function() {
+            const backToTopButton = document.querySelector('.back-to-top-button');
+            if (backToTopButton) {
+                if (window.scrollY > 300) {
+                    backToTopButton.classList.add('visible');
+                } else {
+                    backToTopButton.classList.remove('visible');
+                }
+            }
+        });
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            const revealElements = document.querySelectorAll('.content-section');
+            
+            function checkReveal() {
+                const triggerBottom = window.innerHeight * 0.85;
+                
+                revealElements.forEach(section => {
+                    const sectionTop = section.getBoundingClientRect().top;
+                    if (sectionTop < triggerBottom) {
+                        section.classList.add('revealed');
+                    }
+                });
+            }
+            
+            revealElements.forEach(section => {
+                section.classList.add('reveal-section');
+            });
+            
+            checkReveal();
+            
+            window.addEventListener('scroll', checkReveal);
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const titleElement = document.querySelector('.rc-title');
+            const cursor = document.querySelector('.title-cursor');
+            const text = titleElement.getAttribute('data-text');
+            
+            titleElement.textContent = '';
+            cursor.classList.remove('hide');
+            
+            let charIndex = 0;
+            
+            function typeTitle() {
+                if (charIndex < text.length) {
+                    titleElement.textContent += text.charAt(charIndex);
+                    charIndex++;
+                    setTimeout(typeTitle, 100);
+                } else {
+                    cursor.classList.add('hide');
+                }
+            }
+            
+            setTimeout(typeTitle, 500);
+        });
+    </script>
+</body>
+</html>
