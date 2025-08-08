@@ -963,7 +963,7 @@ nav ul li a.active::after {
 .project-img {
     position: relative;
     padding-top: 100%;
-    overflow: hidden;
+    overflow: visible;
     transform-origin: top;
     transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -1069,6 +1069,53 @@ nav ul li a.active::after {
         height: 70px;
         top: 10px;
         right: 10px;
+    }
+}
+
+/* Award Badge Styles */
+.award-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 999;
+    transition: transform 0.3s ease;
+}
+
+.gold-badge {
+    width: 60px;
+    height: auto;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+    transition: transform 0.3s ease;
+    display: block;
+}
+
+.project-card:hover .award-badge {
+    transform: scale(1.1) rotate(5deg);
+}
+
+.project-card:hover .gold-badge {
+    filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.4));
+}
+
+@media (max-width: 768px) {
+    .award-badge {
+        top: 5px;
+        right: 5px;
+    }
+    
+    .gold-badge {
+        width: 50px;
+    }
+}
+
+@media (max-width: 480px) {
+    .award-badge {
+        top: 3px;
+        right: 3px;
+    }
+    
+    .gold-badge {
+        width: 45px;
     }
 }
 
