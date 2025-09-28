@@ -1079,6 +1079,9 @@ nav ul li a.active::after {
     right: 10px;
     z-index: 999;
     transition: transform 0.3s ease;
+    display: block;
+    background: red;
+    border: 2px solid yellow;
 }
 
 .gold-badge {
@@ -1097,6 +1100,34 @@ nav ul li a.active::after {
     filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.4));
 }
 
+/* First Position Badge Styles */
+.first-position-badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 1000;
+    transition: transform 0.3s ease;
+    display: block;
+    background: blue;
+    border: 2px solid green;
+}
+
+.first-badge-img {
+    width: 60px;
+    height: auto;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+    transition: transform 0.3s ease;
+    display: block;
+}
+
+.project-card:hover .first-position-badge {
+    transform: scale(1.1) rotate(-5deg);
+}
+
+.project-card:hover .first-badge-img {
+    filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.4));
+}
+
 @media (max-width: 768px) {
     .award-badge {
         top: 5px;
@@ -1104,6 +1135,15 @@ nav ul li a.active::after {
     }
     
     .gold-badge {
+        width: 50px;
+    }
+    
+    .first-position-badge {
+        top: 5px;
+        left: 5px;
+    }
+    
+    .first-badge-img {
         width: 50px;
     }
 }
@@ -1115,6 +1155,15 @@ nav ul li a.active::after {
     }
     
     .gold-badge {
+        width: 45px;
+    }
+    
+    .first-position-badge {
+        top: 3px;
+        left: 3px;
+    }
+    
+    .first-badge-img {
         width: 45px;
     }
 }
@@ -1756,6 +1805,19 @@ footer {
 .journey-section.active {
     display: block;
     opacity: 1;
+}
+
+/* Project links in awards section */
+#awards .item-description a {
+    color: var(--primary-color);
+    font-weight: bold;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+#awards .item-description a:hover {
+    color: #5a52d5;
+    text-decoration: underline;
 }
 
 .journey-item {
