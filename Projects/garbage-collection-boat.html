@@ -36,13 +36,17 @@
 
     <section class="project-hero">
         <div class="container">
-            <h1>Garbage Collection Boat</h1>
-            <p class="project-subtitle">Autonomous water vehicle designed to collect floating garbage from water bodies</p>
+            <h1>
+                <span class="title-wrapper">
+                    <span class="rc-title" data-text="Garbage Collection Boat"></span>
+                    <span class="title-cursor"></span>
+                </span>
+            </h1>
             <div class="project-tags">
-                <span class="tag">Arduino</span>
-                <span class="tag">Robotics</span>
-                <span class="tag">Sensors</span>
-                <span class="tag">Environmental</span>
+                <span class="tag" style="animation-delay: 0.5s">Arduino</span>
+                <span class="tag" style="animation-delay: 0.6s">Robotics</span>
+                <span class="tag" style="animation-delay: 0.7s">Sensors</span>
+                <span class="tag" style="animation-delay: 0.8s">Environmental</span>
             </div>
         </div>
     </section>
@@ -87,24 +91,70 @@
                 <div class="content-section">
                     <h3>Technical Implementation</h3>
                     
-                    <!-- Code Editor Component for Arduino Code -->
-                    <h4>Main Control Logic</h4>
+                    <h3>Code</h3>
                     <div class="code-editor">
                         <div class="header">
-                            <span class="title">Arduino</span>
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="icon">
-                                <g stroke-width="0" id="SVGRepo_bgCarrier"></g>
-                                <g stroke-linejoin="round" stroke-linecap="round" id="SVGRepo_tracerCarrier"></g>
-                                <g id="SVGRepo_iconCarrier">
-                                    <path stroke-linecap="round" stroke-width="2" stroke="#4C4F5A" d="M6 6L18 18"></path>
-                                    <path stroke-linecap="round" stroke-width="2" stroke="#4C4F5A" d="M18 6L6 18"></path>
-                                </g>
-                            </svg>
+                            <span class="title">garbage_boat.ino</span>
+                            <div class="editor-actions">
+                                <button class="action-btn copy-btn" onclick="copyCode(this)">
+                                    <i class="far fa-copy"></i>
+                                    <span>Copy</span>
+                                </button>
+                                <button class="action-btn download-btn" onclick="downloadCode(this)">
+                                    <i class="fas fa-download"></i>
+                                </button>
+                                <button class="action-btn close-btn">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                            </div>
                         </div>
                         <div class="editor-content">
+                            <div class="copy-message">Copied to clipboard!</div>
+                            <div class="line-numbers">
+                                <span>1</span>
+                                <span>2</span>
+                                <span>3</span>
+                                <span>4</span>
+                                <span>5</span>
+                                <span>6</span>
+                                <span>7</span>
+                                <span>8</span>
+                                <span>9</span>
+                                <span>10</span>
+                                <span>11</span>
+                                <span>12</span>
+                                <span>13</span>
+                                <span>14</span>
+                                <span>15</span>
+                                <span>16</span>
+                                <span>17</span>
+                                <span>18</span>
+                                <span>19</span>
+                                <span>20</span>
+                                <span>21</span>
+                                <span>22</span>
+                                <span>23</span>
+                                <span>24</span>
+                                <span>25</span>
+                                <span>26</span>
+                                <span>27</span>
+                                <span>28</span>
+                                <span>29</span>
+                                <span>30</span>
+                                <span>31</span>
+                                <span>32</span>
+                                <span>33</span>
+                                <span>34</span>
+                                <span>35</span>
+                                <span>36</span>
+                                <span>37</span>
+                                <span>38</span>
+                                <span>39</span>
+                                <span>40</span>
+                            </div>
                             <code class="code">
-                                <p><span class="color-1">#include</span> <span class="color-0">&lt;Servo.h&gt;</span></p>
-                                <p><span class="color-1">#include</span> <span class="color-0">&lt;NewPing.h&gt;</span></p>
+                                <p><span class="color-1">#include</span> <span class="color-4">&lt;Servo.h&gt;</span></p>
+                                <p><span class="color-1">#include</span> <span class="color-4">&lt;NewPing.h&gt;</span></p>
                                 <p></p>
                                 <p><span class="color-2">// Motor pins</span></p>
                                 <p><span class="color-1">const int</span> <span class="color-3">leftMotorPin</span> = 5;</p>
@@ -118,10 +168,36 @@
                                 <p><span class="color-3">Servo</span> collectorServo;</p>
                                 <p></p>
                                 <p><span class="color-1">void</span> <span class="color-0">setup</span>() {</p>
-                                <p class="property"><span class="color-3">Serial</span>.<span class="color-0">begin</span>(9600);</p>
-                                <p class="property"><span class="color-3">collectorServo</span>.<span class="color-0">attach</span>(3);</p>
-                                <p class="property"><span class="color-0">pinMode</span>(leftMotorPin, OUTPUT);</p>
-                                <p class="property"><span class="color-0">pinMode</span>(rightMotorPin, OUTPUT);</p>
+                                <p>    <span class="color-3">Serial</span>.<span class="color-0">begin</span>(9600);</p>
+                                <p>    <span class="color-3">collectorServo</span>.<span class="color-0">attach</span>(3);</p>
+                                <p>    <span class="color-0">pinMode</span>(leftMotorPin, OUTPUT);</p>
+                                <p>    <span class="color-0">pinMode</span>(rightMotorPin, OUTPUT);</p>
+                                <p>}</p>
+                                <p></p>
+                                <p><span class="color-1">void</span> <span class="color-0">loop</span>() {</p>
+                                <p>    <span class="color-2">// Read distance from ultrasonic sensor</span></p>
+                                <p>    <span class="color-1">long</span> duration = <span class="color-0">pulseIn</span>(echoPin, HIGH);</p>
+                                <p>    <span class="color-1">int</span> distance = duration * 0.034 / 2;</p>
+                                <p></p>
+                                <p>    <span class="color-2">// If debris detected, collect it</span></p>
+                                <p>    <span class="color-0">if</span> (distance < 20) {</p>
+                                <p>        <span class="color-0">collectDebris</span>();</p>
+                                <p>    } <span class="color-0">else</span> {</p>
+                                <p>        <span class="color-0">navigateForward</span>();</p>
+                                <p>    }</p>
+                                <p></p>
+                                <p>    <span class="color-0">delay</span>(100);</p>
+                                <p>}</p>
+                                <p></p>
+                                <p><span class="color-1">void</span> <span class="color-0">collectDebris</span>() {</p>
+                                <p>    <span class="color-3">collectorServo</span>.<span class="color-0">write</span>(90);</p>
+                                <p>    <span class="color-0">delay</span>(500);</p>
+                                <p>    <span class="color-3">collectorServo</span>.<span class="color-0">write</span>(0);</p>
+                                <p>}</p>
+                                <p></p>
+                                <p><span class="color-1">void</span> <span class="color-0">navigateForward</span>() {</p>
+                                <p>    <span class="color-0">analogWrite</span>(leftMotorPin, 150);</p>
+                                <p>    <span class="color-0">analogWrite</span>(rightMotorPin, 150);</p>
                                 <p>}</p>
                             </code>
                         </div>
@@ -192,5 +268,84 @@
     </footer>
 
     <script src="../script.js"></script>
+    <script>
+        function copyCode(button) {
+            const codeEditor = button.closest('.code-editor');
+            const codeElement = codeEditor.querySelector('.code');
+            
+            const tempElement = document.createElement('textarea');
+            
+            let codeText = '';
+            codeElement.querySelectorAll('p').forEach(line => {
+                codeText += line.textContent + '\n';
+            });
+            
+            tempElement.value = codeText;
+            document.body.appendChild(tempElement);
+            tempElement.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempElement);
+            
+            const copyMessage = codeEditor.querySelector('.copy-message');
+            copyMessage.classList.add('show');
+            
+            setTimeout(() => {
+                copyMessage.classList.remove('show');
+            }, 2000);
+        }
+        
+        function downloadCode(button) {
+            const codeEditor = button.closest('.code-editor');
+            const codeElement = codeEditor.querySelector('.code');
+            const filename = codeEditor.querySelector('.title').textContent;
+            
+            let codeText = '';
+            codeElement.querySelectorAll('p').forEach(line => {
+                codeText += line.textContent + '\n';
+            });
+            
+            const blob = new Blob([codeText], {type: 'text/plain'});
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = filename;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            
+            const copyMessage = codeEditor.querySelector('.copy-message');
+            copyMessage.textContent = 'Downloaded!';
+            copyMessage.classList.add('show');
+            
+            setTimeout(() => {
+                copyMessage.classList.remove('show');
+                copyMessage.textContent = 'Copied to clipboard!';
+            }, 2000);
+        }
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            const titleElement = document.querySelector('.rc-title');
+            const cursor = document.querySelector('.title-cursor');
+            const text = titleElement.getAttribute('data-text');
+            
+            titleElement.textContent = '';
+            cursor.classList.remove('hide');
+            
+            let charIndex = 0;
+            
+            function typeTitle() {
+                if (charIndex < text.length) {
+                    titleElement.textContent += text.charAt(charIndex);
+                    charIndex++;
+                    setTimeout(typeTitle, 100);
+                } else {
+                    cursor.classList.add('hide');
+                }
+            }
+            
+            setTimeout(typeTitle, 500);
+        });
+    </script>
 </body>
 </html> 
