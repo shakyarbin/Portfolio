@@ -33,6 +33,11 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Three.js for 3D Model -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -53,6 +58,83 @@
         /* Hide non-all projects by default */
         .projects-grid .project-card.hidden {
             display: none !important;
+        }
+        
+        /* 3D Model Styles */
+        .contact-3d-model {
+            flex: 1;
+            height: 600px;
+            position: relative;
+            background: transparent;
+            border-radius: 15px;
+            overflow: hidden;
+            margin-top: -100px;
+        }
+        
+        #keyboard-3d-container {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+        
+        #keyboard-loading {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: var(--text-color);
+            font-size: 16px;
+            z-index: 100;
+        }
+        
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            align-items: start;
+        }
+        
+        .contact-form .social-links {
+            margin-top: 2rem;
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+        
+        .contact-form .social-links .social-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .contact-form .social-links .social-link:hover {
+            background: var(--secondary-color);
+            transform: translateY(-2px);
+        }
+        
+        @media (max-width: 1024px) {
+            .contact-content {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .contact-3d-model {
+                height: 400px;
+                order: -1;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .contact-3d-model {
+                height: 300px;
+            }
         }
     </style>
 </head>
@@ -746,39 +828,9 @@
             <img src="Newari/About me.png" alt="Contact Me in Newari" class="newari-text">
         </div>
         <div class="contact-content">
-            <div class="contact-info">
-                <div class="contact-item">
-                    <div class="contact-icon">
-                        <i class="fas fa-map-marker-alt"></i>
-                    </div>
-                    <div class="contact-text">
-                        <h3>Location</h3>
-                        <p>Kathmandu, Nepal</p>
-                    </div>
-                </div>
-                <div class="contact-item">
-                    <div class="contact-icon">
-                        <i class="fas fa-envelope"></i>
-                    </div>
-                    <div class="contact-text">
-                        <h3>Email</h3>
-                        <p>notarbin99@gmail.com</p>
-                    </div>
-                </div>
-                <div class="contact-item">
-                    <div class="contact-icon">
-                        <i class="fas fa-phone"></i>
-                    </div>
-                    <div class="contact-text">
-                        <h3>Phone</h3>
-                        <p>+1 234 567 890</p>
-                    </div>
-                </div>
-                <div class="social-links">
-                    <a href="https://www.linkedin.com/in/arbin-shakya-408a40283/" target="_blank" class="social-link"><i class="fab fa-linkedin"></i></a>
-                    <a href="https://github.com/shakyarbin" target="_blank" class="social-link"><i class="fab fa-github"></i></a>
-                    <a href="mailto:notarbin99@gmail.com" class="social-link"><i class="fas fa-envelope"></i></a>
-                    <a href="https://www.instagram.com/not_arbin/" target="_blank" class="social-link"><i class="fab fa-instagram"></i></a>
+            <div class="contact-3d-model">
+                <div id="keyboard-3d-container">
+                    <div id="keyboard-loading">Loading 3D Keyboard...</div>
                 </div>
             </div>
             <div class="contact-form">
@@ -795,7 +847,7 @@
                     <div class="form-group">
                         <textarea id="message" name="message" placeholder="Your Message" required></textarea>
                     </div>
-                    <button type="submit" class="btn primary-btn">Send Message</button>
+                    <button type="submit" class="btn primary-btn">Send Message <i class="far fa-paper-plane"></i></button>
                 </form>
             </div>
         </div>
@@ -819,6 +871,9 @@
                     card.classList.add('hidden');
                 }
             });
+            
+            // Initialize 3D Keyboard Model
+            init3DKeyboard();
         });
 
         // Filter projects based on button clicks
@@ -854,6 +909,153 @@
                 });
             });
         });
+
+        // 3D Keyboard Model Initialization
+        function init3DKeyboard() {
+            const container = document.getElementById('keyboard-3d-container');
+            const loading = document.getElementById('keyboard-loading');
+            
+            if (!container) return;
+            
+            // Scene setup
+            const scene = new THREE.Scene();
+            scene.background = null; // Transparent background
+
+            // Camera
+            const camera = new THREE.PerspectiveCamera(75, container.offsetWidth / container.offsetHeight, 0.1, 1000);
+            camera.position.set(0, 0, 6);
+
+            // Renderer
+            const renderer = new THREE.WebGLRenderer({ 
+                antialias: true,
+                alpha: true // Enable transparency
+            });
+            renderer.setSize(container.offsetWidth, container.offsetHeight);
+            renderer.shadowMap.enabled = true;
+            renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+            renderer.outputEncoding = THREE.sRGBEncoding;
+            renderer.setClearColor(0x000000, 0); // Transparent clear color
+            container.appendChild(renderer.domElement);
+
+            // Controls
+            const controls = new THREE.OrbitControls(camera, renderer.domElement);
+            controls.enableDamping = true;
+            controls.dampingFactor = 0.05;
+            controls.autoRotate = false;
+            controls.autoRotateSpeed = 1;
+            controls.enableZoom = false;
+
+            // Lighting
+            const ambientLight = new THREE.AmbientLight(0x404040, 0.6);
+            scene.add(ambientLight);
+
+            const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
+            directionalLight.position.set(10, 10, 5);
+            directionalLight.castShadow = true;
+            scene.add(directionalLight);
+
+            // Variables for model and animations
+            let model = null;
+            let mixer = null;
+            let animations = [];
+            
+            // Scroll-based rotation variables
+            let scrollRotation = 0;
+            let targetRotation = 0;
+
+            // Load the model
+            const loader = new THREE.GLTFLoader();
+            
+            loader.load(
+                'models/stylized_keyboard.glb',
+                function(gltf) {
+                    console.log('Keyboard model loaded successfully');
+                    
+                    model = gltf.scene;
+                    scene.add(model);
+
+                    // Handle animations
+                    if (gltf.animations && gltf.animations.length > 0) {
+                        mixer = new THREE.AnimationMixer(model);
+                        animations = gltf.animations;
+                        
+                        // Play first animation
+                        const action = mixer.clipAction(animations[0]);
+                        action.play();
+                    }
+
+                    // Center and scale the model
+                    const box = new THREE.Box3().setFromObject(model);
+                    const center = box.getCenter(new THREE.Vector3());
+                    const size = box.getSize(new THREE.Vector3());
+                    const maxDim = Math.max(size.x, size.y, size.z);
+                    const scale = 4 / maxDim;
+
+                    model.scale.setScalar(scale);
+                    model.position.sub(center.multiplyScalar(scale));
+
+                    // Hide loading
+                    loading.style.display = 'none';
+                },
+                function(progress) {
+                    const percent = Math.round((progress.loaded / progress.total) * 100);
+                    loading.textContent = `Loading 3D Keyboard... ${percent}%`;
+                },
+                function(error) {
+                    console.error('Error loading keyboard model:', error);
+                    loading.textContent = 'Error loading 3D model';
+                }
+            );
+
+            // Scroll event listener
+            window.addEventListener('scroll', function() {
+                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+                const scrollPercent = scrollTop / maxScroll;
+                
+                // Calculate rotation based on scroll (360 degrees over full scroll)
+                targetRotation = scrollPercent * Math.PI * 2; // Full rotation
+            });
+
+            // Animation loop
+            function animate() {
+                requestAnimationFrame(animate);
+
+                // Update animation mixer
+                if (mixer) {
+                    mixer.update(0.016); // 60fps
+                }
+
+                // Smooth scroll-based rotation
+                scrollRotation += (targetRotation - scrollRotation) * 0.04;
+                
+                // Apply rotation to model with slanted effect
+                if (model) {
+                    model.rotation.y = scrollRotation;
+                    // Add slanted rotation effects
+                    model.rotation.x = Math.sin(scrollRotation) * -8;
+                    model.rotation.z = Math.cos(scrollRotation) * -0.2;
+                }
+
+                // Update controls
+                controls.update();
+
+                // Render
+                renderer.render(scene, camera);
+            }
+
+            // Handle window resize
+            function onWindowResize() {
+                camera.aspect = container.offsetWidth / container.offsetHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(container.offsetWidth, container.offsetHeight);
+            }
+
+            window.addEventListener('resize', onWindowResize);
+
+            // Start animation loop
+            animate();
+        }
     </script>
 </body>
 </html> 
