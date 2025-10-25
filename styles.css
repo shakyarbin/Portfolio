@@ -2221,18 +2221,18 @@ footer {
     height: 425px;
     display: flex;
     flex-wrap: nowrap;
-    justify-content: center;
+    justify-content: start;
     max-width: 1200px;
     position: relative;
     overflow-x: auto;
     scroll-behavior: smooth;
-    scrollbar-width: thin;
-    scrollbar-color: var(--primary-color) transparent;
+    scrollbar-width: none;
+    scrollbar-color: transparent transparent;
     padding: 0 30px;
 }
 
 .certificates .container::-webkit-scrollbar {
-    height: 6px;
+    height: 0;
 }
 
 .certificates .container::-webkit-scrollbar-track {
@@ -2244,8 +2244,6 @@ footer {
     border-radius: 3px;
 }
 
-/* Remove fade effect - no gradients needed */
-
 .certificates .card {
     width: 80px;
     border-radius: 2rem;
@@ -2254,15 +2252,11 @@ footer {
     margin: 0 10px;
     display: flex;
     align-items: center;
-    transition: .6s cubic-bezier(.28,-0.03,0,.99);
     box-shadow: 0px 10px 30px -5px rgba(0,0,0,0.3);
     position: relative;
     flex-shrink: 0;
-}
-
-/* Hide certificates that are not visible */
-.certificates .card.hidden {
-    display: none;
+    transition: width 0.6s cubic-bezier(0.28, -0.03, 0, 0.99),
+                box-shadow 0.6s cubic-bezier(0.28, -0.03, 0, 0.99);
 }
 
 .certificates .card .row {
@@ -2276,12 +2270,19 @@ footer {
     width: 100%;
     height: 100%;
     position: relative;
+    transition: transform 0.6s cubic-bezier(0.28, -0.03, 0, 0.99);
 }
 
 .certificates .certificate-image img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    transition: transform 0.6s cubic-bezier(0.28, -0.03, 0, 0.99);
+}
+
+.certificates input:checked + label .certificate-image,
+.certificates input:checked + label .certificate-image img {
+    transform: scale(1.05);
 }
 
 .certificates .description {
@@ -2293,10 +2294,8 @@ footer {
 }
 
 .certificates input:checked + label {
-    width: 100%;
-    max-width: 800px;
-    min-width: 600px;
-    flex-shrink: 0;
+    width: 640px;
+    box-shadow: 0px 15px 40px -5px rgba(0,0,0,0.4);
 }
 
 /* Remove the description transform and opacity transitions */
@@ -2338,24 +2337,15 @@ footer {
     .certificates .container {
         height: 250px;
         padding: 0 15px;
-        justify-content: flex-start;
-        overflow-x: auto;
-        scroll-behavior: smooth;
     }
-    
-    /* No fade effect on mobile */
     
     .certificates .card {
         width: 60px;
         margin: 0 5px;
-        flex-shrink: 0;
     }
     
     .certificates input:checked + label {
-        width: 100%;
-        max-width: 90vw;
-        min-width: 280px;
-        margin: 0 10px;
+        width: 300px;
     }
     
     .certificates-dots {
@@ -2368,42 +2358,21 @@ footer {
         width: 10px;
         height: 10px;
     }
-    
-    .certificates .description {
-        padding: 15px;
-    }
-    
-    .certificates .description h4 {
-        font-size: 16px;
-    }
-    
-    .certificates .description p {
-        font-size: 12px;
-    }
 }
 
 @media (max-width: 480px) {
     .certificates .container {
         height: 200px;
         padding: 0 10px;
-        justify-content: flex-start;
-        overflow-x: auto;
-        scroll-behavior: smooth;
     }
-    
-    /* No fade effect on mobile */
     
     .certificates .card {
         width: 50px;
         margin: 0 3px;
-        flex-shrink: 0;
     }
     
     .certificates input:checked + label {
-        width: 100%;
-        max-width: 95vw;
-        min-width: 250px;
-        margin: 0 5px;
+        width: 250px;
     }
     
     .certificates-dots {
@@ -2415,10 +2384,6 @@ footer {
     .certificates-dot {
         width: 8px;
         height: 8px;
-    }
-    
-    .certificates .description {
-        padding: 10px;
     }
 }
 

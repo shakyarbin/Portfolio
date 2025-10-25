@@ -374,77 +374,40 @@ document.addEventListener('DOMContentLoaded', function() {
 document.addEventListener('DOMContentLoaded', function() {
     const certificateInputs = document.querySelectorAll('.certificates input[type="radio"]');
     const container = document.querySelector('.certificates .container');
-    const allCards = document.querySelectorAll('.certificates .card');
     const certificatesSection = document.querySelector('.certificates');
     
-    // Create navigation dots
-    createNavigationDots();
+    if (!certificateInputs.length || !container) return;
     
-    // Initially show only first certificate and hide others
-    limitVisibleCertificates();
+    // Create dots
+    createDots();
     
-    // Ensure only the first certificate is checked initially
-    if (certificateInputs.length > 0) {
+    // Select first certificate
+    if (certificateInputs[0]) {
         certificateInputs[0].checked = true;
-        certificateInputs[0].dispatchEvent(new Event('change'));
+        centerSelected(0);
     }
     
-    // Handle window resize for responsive behavior
-    window.addEventListener('resize', function() {
-        const activeInput = document.querySelector('.certificates input[type="radio"]:checked');
-        if (activeInput) {
-            const activeIndex = Array.from(certificateInputs).indexOf(activeInput);
-            showBannersAroundSelected(activeIndex);
-        } else {
-            limitVisibleCertificates();
-        }
-    });
-    
+    // Listen to certificate changes
     certificateInputs.forEach((input, index) => {
         input.addEventListener('change', function() {
-            // First, uncheck all other inputs to ensure only one is selected
-            certificateInputs.forEach(otherInput => {
-                if (otherInput !== this) {
-                    otherInput.checked = false;
-                }
-            });
-            
-            // Hide all certificates first
-            hideAllCertificates();
-            
-            // Show only the selected certificate at full width
-            const isMobile = window.innerWidth <= 768;
-            this.nextElementSibling.style.display = 'flex';
-            this.nextElementSibling.style.width = '100%';
-            this.nextElementSibling.style.maxWidth = isMobile ? '90vw' : '800px';
-            this.nextElementSibling.style.minWidth = isMobile ? '280px' : '600px';
-            
-            // Show banners around the selected certificate
-            showBannersAroundSelected(index);
-            
-            // Update dots
-            updateDots(index);
-            
-            // Center the selected certificate
-            centerCertificate(this.nextElementSibling);
+            if (this.checked) {
+                centerSelected(index);
+                updateDots(index);
+            }
         });
     });
     
-    function createNavigationDots() {
+    function createDots() {
+        const existingDots = certificatesSection.querySelector('.certificates-dots');
+        if (existingDots) return; // Prevent duplicates
+        
         const dotsContainer = document.createElement('div');
         dotsContainer.className = 'certificates-dots';
         
-        allCards.forEach((card, index) => {
+        certificateInputs.forEach((input, index) => {
             const dot = document.createElement('button');
-            dot.className = 'certificates-dot';
-            dot.setAttribute('data-index', index);
+            dot.className = 'certificates-dot' + (index === 0 ? ' active' : '');
             dot.addEventListener('click', () => {
-                // Uncheck all other inputs first
-                certificateInputs.forEach(otherInput => {
-                    otherInput.checked = false;
-                });
-                
-                // Check the selected input
                 certificateInputs[index].checked = true;
                 certificateInputs[index].dispatchEvent(new Event('change'));
             });
@@ -454,71 +417,22 @@ document.addEventListener('DOMContentLoaded', function() {
         certificatesSection.appendChild(dotsContainer);
     }
     
-    function limitVisibleCertificates() {
-        const isMobile = window.innerWidth <= 768;
-        const initialVisible = isMobile ? 1 : 2;
-        
-        allCards.forEach((card, index) => {
-            if (index < initialVisible) {
-                card.style.display = 'flex';
-                card.style.width = isMobile ? '60px' : '80px';
-                card.classList.remove('hidden');
-            } else {
-                card.style.display = 'none';
-                card.classList.add('hidden');
+    function centerSelected(index) {
+        setTimeout(() => {
+            const selectedCard = certificateInputs[index].nextElementSibling;
+            if (selectedCard && container) {
+                const scrollLeft = selectedCard.offsetLeft - 
+                                 (container.offsetWidth / 2) + 
+                                 (selectedCard.offsetWidth / 2);
+                container.scrollTo({ left: scrollLeft, behavior: 'smooth' });
             }
-        });
-    }
-    
-    function hideAllCertificates() {
-        allCards.forEach(card => {
-            card.style.display = 'none';
-            card.classList.add('hidden');
-        });
-    }
-    
-    function showBannersAroundSelected(selectedIndex) {
-        const totalCards = allCards.length;
-        const isMobile = window.innerWidth <= 768;
-        const visibleRange = isMobile ? 1 : 2; // Show 1 banner on each side for mobile, 2 for desktop
-        
-        // Show banners around the selected certificate
-        for (let i = Math.max(0, selectedIndex - visibleRange); 
-             i <= Math.min(totalCards - 1, selectedIndex + visibleRange); 
-             i++) {
-            if (i !== selectedIndex) {
-                allCards[i].style.display = 'flex';
-                allCards[i].style.width = isMobile ? '60px' : '80px';
-                allCards[i].classList.remove('hidden');
-            }
-        }
+        }, 50);
     }
     
     function updateDots(activeIndex) {
         const dots = document.querySelectorAll('.certificates-dot');
-        dots.forEach((dot, index) => {
-            if (index === activeIndex) {
-                dot.classList.add('active');
-            } else {
-                dot.classList.remove('active');
-            }
-        });
-    }
-    
-    function centerCertificate(selectedCard) {
-        if (!container || !selectedCard) return;
-        
-        const containerWidth = container.offsetWidth;
-        const cardWidth = selectedCard.offsetWidth;
-        const cardOffsetLeft = selectedCard.offsetLeft;
-        
-        // Calculate the scroll position to center the card
-        const scrollLeft = cardOffsetLeft - (containerWidth / 2) + (cardWidth / 2);
-        
-        // Smooth scroll to center the card
-        container.scrollTo({
-            left: scrollLeft,
-            behavior: 'smooth'
+        dots.forEach((dot, i) => {
+            dot.classList.toggle('active', i === activeIndex);
         });
     }
 }); 
