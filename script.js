@@ -383,8 +383,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Select first certificate
     if (certificateInputs[0]) {
-        certificateInputs[0].checked = true;
-        centerSelected(0);
+        selectCertificate(0);
     }
     
     // Listen to certificate changes
@@ -396,7 +395,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
-    
+
     function createDots() {
         const existingDots = certificatesSection.querySelector('.certificates-dots');
         if (existingDots) return; // Prevent duplicates
@@ -408,8 +407,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const dot = document.createElement('button');
             dot.className = 'certificates-dot' + (index === 0 ? ' active' : '');
             dot.addEventListener('click', () => {
-                certificateInputs[index].checked = true;
-                certificateInputs[index].dispatchEvent(new Event('change'));
+                selectCertificate(index);
             });
             dotsContainer.appendChild(dot);
         });
@@ -434,5 +432,21 @@ document.addEventListener('DOMContentLoaded', function() {
         dots.forEach((dot, i) => {
             dot.classList.toggle('active', i === activeIndex);
         });
+    }
+
+    function selectCertificate(index) {
+        if (!certificateInputs[index]) return;
+        certificateInputs[index].checked = true;
+        certificateInputs[index].dispatchEvent(new Event('change'));
+    }
+
+    function getActiveIndex() {
+        let activeIndex = 0;
+        certificateInputs.forEach((input, index) => {
+            if (input.checked) {
+                activeIndex = index;
+            }
+        });
+        return activeIndex;
     }
 }); 
