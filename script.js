@@ -381,10 +381,9 @@ document.addEventListener('DOMContentLoaded', function () {
     // Create dots
     createDots();
 
-    // Select middle certificate
+    // Select first certificate
     if (certificateInputs.length > 0) {
-        const middleIndex = Math.floor(certificateInputs.length / 2);
-        selectCertificate(middleIndex);
+        selectCertificate(0);
     }
 
     // Listen to certificate changes
