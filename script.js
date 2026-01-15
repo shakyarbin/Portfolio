@@ -20,8 +20,8 @@ hamburger.addEventListener('click', toggleMobileNav);
 
 // Close mobile nav when clicking outside
 document.addEventListener('click', (e) => {
-    if (nav.classList.contains('active') && 
-        !nav.contains(e.target) && 
+    if (nav.classList.contains('active') &&
+        !nav.contains(e.target) &&
         !hamburger.contains(e.target)) {
         toggleMobileNav();
     }
@@ -38,12 +38,12 @@ document.querySelectorAll('nav a').forEach(link => {
 
 // Smooth scrolling with offset
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
+    anchor.addEventListener('click', function (e) {
         e.preventDefault();
-        
+
         const targetId = this.getAttribute('href');
         const targetElement = document.querySelector(targetId);
-        
+
         if (targetElement) {
             const headerOffset = 70;
             const elementPosition = targetElement.getBoundingClientRect().top;
@@ -63,13 +63,13 @@ let ticking = false;
 
 function updateHeader() {
     const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-    
+
     if (scrollTop > 100) {
         header.classList.add('scrolled');
     } else {
         header.classList.remove('scrolled');
     }
-    
+
     lastScrollTop = scrollTop;
     ticking = false;
 }
@@ -88,24 +88,24 @@ filterButtons.forEach(button => {
     button.addEventListener('click', () => {
         // Remove active class from all buttons
         filterButtons.forEach(btn => btn.classList.remove('active'));
-        
+
         // Add active class to clicked button
         button.classList.add('active');
-        
+
         const filterValue = button.getAttribute('data-filter');
-        
+
         // Filter projects with fade effect
         projectCards.forEach((card, index) => {
             // Set card index for staggered animation
             card.style.setProperty('--card-index', index);
-            
+
             // Reset animation
             card.style.animation = 'none';
             card.offsetHeight; // Trigger reflow
-            
+
             const cardCategories = card.getAttribute('data-category').split(' ');
-            
-            if (filterValue === 'all' && cardCategories.includes('all') || 
+
+            if (filterValue === 'all' && cardCategories.includes('all') ||
                 cardCategories.includes(filterValue)) {
                 card.classList.remove('hidden');
                 // Re-trigger animation
@@ -136,9 +136,9 @@ const skillsObserver = new IntersectionObserver((entries) => {
 skillsObserver.observe(skillsSection);
 
 // Form submission with validation
-contactForm.addEventListener('submit', function(e) {
+contactForm.addEventListener('submit', function (e) {
     e.preventDefault();
-    
+
     // Basic form validation
     const formData = new FormData(this);
     let isValid = true;
@@ -234,10 +234,10 @@ journeyTabs.forEach(tab => {
         // Remove active class from all tabs and sections
         journeyTabs.forEach(t => t.classList.remove('active'));
         journeySections.forEach(section => section.classList.remove('active'));
-        
+
         // Add active class to clicked tab
         tab.classList.add('active');
-        
+
         // Show corresponding section
         const targetSection = document.getElementById(tab.getAttribute('data-tab'));
         targetSection.classList.add('active');
@@ -278,13 +278,13 @@ function typeText() {
 document.addEventListener('DOMContentLoaded', typeText);
 
 // Paper plane animation
-document.querySelector('.primary-btn').addEventListener('click', function(e) {
+document.querySelector('.primary-btn').addEventListener('click', function (e) {
     const btn = this;
     const plane = btn.querySelector('i');
-    
+
     if (!btn.classList.contains('animate')) {
         btn.classList.add('animate');
-        
+
         // Remove animation class after animation completes
         setTimeout(() => {
             btn.classList.remove('animate');
@@ -297,18 +297,18 @@ function typeSectionTitle(element) {
     const titleSpan = element.querySelector('.section-title');
     const cursor = element.querySelector('.section-cursor');
     const text = titleSpan.getAttribute('data-text') || titleSpan.textContent;
-    
+
     // Store original text if not already stored
     if (!titleSpan.getAttribute('data-text')) {
         titleSpan.setAttribute('data-text', text);
     }
-    
+
     titleSpan.textContent = '';
     cursor.classList.remove('hide');
     cursor.classList.add('typing');
-    
+
     let charIndex = 0;
-    
+
     function type() {
         if (charIndex < text.length) {
             titleSpan.textContent += text.charAt(charIndex);
@@ -322,7 +322,7 @@ function typeSectionTitle(element) {
             }, 800);
         }
     }
-    
+
     // Start typing
     type();
 }
@@ -344,51 +344,52 @@ document.querySelectorAll('.section-header').forEach(header => {
     // Store original text content
     const titleSpan = header.querySelector('.section-title');
     titleSpan.setAttribute('data-text', titleSpan.textContent);
-    
+
     // Start observing
     sectionObserver.observe(header);
 });
 
 // Apply "All" filter by default when the page loads
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     // Apply the filter for "all" category
     const allFilterBtn = document.querySelector('.filter-btn[data-filter="all"]');
-    
+
     // Make sure all cards with "all" in their data-category are shown
     document.querySelectorAll('.project-card').forEach(card => {
         const cardCategories = card.getAttribute('data-category').split(' ');
-        
+
         if (cardCategories.includes('all')) {
             card.classList.remove('hidden');
         } else {
             card.classList.add('hidden');
         }
     });
-    
+
     // Ensure the "all" button is active
     document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
     allFilterBtn.classList.add('active');
 });
 
 // Certificate carousel functionality
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const certificateInputs = document.querySelectorAll('.certificates input[type="radio"]');
     const container = document.querySelector('.certificates .container');
     const certificatesSection = document.querySelector('.certificates');
-    
+
     if (!certificateInputs.length || !container) return;
-    
+
     // Create dots
     createDots();
-    
-    // Select first certificate
-    if (certificateInputs[0]) {
-        selectCertificate(0);
+
+    // Select middle certificate
+    if (certificateInputs.length > 0) {
+        const middleIndex = Math.floor(certificateInputs.length / 2);
+        selectCertificate(middleIndex);
     }
-    
+
     // Listen to certificate changes
     certificateInputs.forEach((input, index) => {
-        input.addEventListener('change', function() {
+        input.addEventListener('change', function () {
             if (this.checked) {
                 centerSelected(index);
                 updateDots(index);
@@ -399,10 +400,10 @@ document.addEventListener('DOMContentLoaded', function() {
     function createDots() {
         const existingDots = certificatesSection.querySelector('.certificates-dots');
         if (existingDots) return; // Prevent duplicates
-        
+
         const dotsContainer = document.createElement('div');
         dotsContainer.className = 'certificates-dots';
-        
+
         certificateInputs.forEach((input, index) => {
             const dot = document.createElement('button');
             dot.className = 'certificates-dot' + (index === 0 ? ' active' : '');
@@ -411,22 +412,28 @@ document.addEventListener('DOMContentLoaded', function() {
             });
             dotsContainer.appendChild(dot);
         });
-        
+
         certificatesSection.appendChild(dotsContainer);
     }
-    
+
     function centerSelected(index) {
-        setTimeout(() => {
+        const performCentering = () => {
             const selectedCard = certificateInputs[index].nextElementSibling;
             if (selectedCard && container) {
-                const scrollLeft = selectedCard.offsetLeft - 
-                                 (container.offsetWidth / 2) + 
-                                 (selectedCard.offsetWidth / 2);
+                const scrollLeft = selectedCard.offsetLeft -
+                    (container.offsetWidth / 2) +
+                    (selectedCard.offsetWidth / 2);
                 container.scrollTo({ left: scrollLeft, behavior: 'smooth' });
             }
-        }, 50);
+        };
+
+        // Initial attempt (starts while animating)
+        setTimeout(performCentering, 50);
+
+        // Follow-up after transition (600ms) + small buffer
+        setTimeout(performCentering, 650);
     }
-    
+
     function updateDots(activeIndex) {
         const dots = document.querySelectorAll('.certificates-dot');
         dots.forEach((dot, i) => {
